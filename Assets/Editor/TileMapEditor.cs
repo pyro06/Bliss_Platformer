@@ -159,7 +159,7 @@ public class TileMapEditor : Editor
 
     void Draw()
     { 
-        var id = brush.tileId.ToString();
+        var id = map.texture2D.name + brush.tileId.ToString();
         float posX = brush.transform.position.x - 0.5f;
         float posY = brush.transform.position.y - 0.5f;
         GameObject tile = GameObject.Find( map.name + "/Tiles/tile_" + id);
@@ -196,7 +196,7 @@ public class TileMapEditor : Editor
 
     void RemoveTile()
     {
-        var id = brush.tileId.ToString();
+        var id = map.texture2D.name + brush.tileId.ToString();
         GameObject tile = GameObject.Find(map.name + "/Tiles/tile_" + id);
         if (tile != null) DestroyImmediate(tile);
     }
