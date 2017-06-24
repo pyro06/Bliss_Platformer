@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TileMap : MonoBehaviour 
 {
@@ -20,7 +21,17 @@ public class TileMap : MonoBehaviour
 
     public bool addNormalTileScript;
 
-    
+    public bool addJumpTileScript;
+
+    public bool addAnimatorController;
+
+    public bool addPoisonTileScript;
+
+    public bool addSpikeScript;
+
+    public bool addLayer;
+
+    public bool addCoinScript;
 
 
     void OnDrawGizmosSelected()

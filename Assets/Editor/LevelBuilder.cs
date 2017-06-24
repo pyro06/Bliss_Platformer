@@ -6,13 +6,15 @@ using UnityEditor;
 #endif
 public class LevelBuilder : ScriptableWizard
 {
-    public GameObject objectOne;
+    //public GameObject objectOne;
 
-    public GameObject objectTwo;
+    //public GameObject objectTwo;
 
-    public List<int> totalSize;
+    //public List<int> totalSize;
 
-    public Vector2 tileSize;
+    //public Vector2 tileSize;
+
+    public string gameObjectName;
 
     [MenuItem("Level Builder/Open Window")]
 	private static void CreateLevelBuilderMenu()
@@ -23,9 +25,9 @@ public class LevelBuilder : ScriptableWizard
     private void OnWizardCreate()
     {
         GameObject emptyGameobject;
-        emptyGameobject = new GameObject("Block");
+        emptyGameobject = new GameObject(gameObjectName);
 
-        Vector2 tilePosition = new Vector2(0, 0);
+        /*Vector2 tilePosition = new Vector2(0, 0);
         for (int i = 0; i< totalSize.Count; i++)
         {
             if (totalSize[i] == 1)
@@ -47,6 +49,6 @@ public class LevelBuilder : ScriptableWizard
                 obj.transform.parent = emptyGameobject.transform;
             }
             
-        }
+        }*/
     }
 }

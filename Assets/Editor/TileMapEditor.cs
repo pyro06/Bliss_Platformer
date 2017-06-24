@@ -32,6 +32,13 @@ public class TileMapEditor : Editor
 
             map.boxCollider = EditorGUILayout.Toggle("BoxCollider2D", map.boxCollider);
             map.addNormalTileScript = EditorGUILayout.Toggle("NormalTileScript", map.addNormalTileScript);
+            map.addJumpTileScript = EditorGUILayout.Toggle("JumpTileScript", map.addJumpTileScript);
+            map.addPoisonTileScript = EditorGUILayout.Toggle("PoisonTileScript", map.addPoisonTileScript);
+            map.addAnimatorController = EditorGUILayout.Toggle("AnimatorController", map.addAnimatorController);
+            map.addSpikeScript = EditorGUILayout.Toggle("SpikeScript", map.addSpikeScript);
+            map.addLayer = EditorGUILayout.Toggle("Add Layer", map.addLayer);
+            map.addCoinScript = EditorGUILayout.Toggle("CoinScript", map.addCoinScript);
+
         }
 
         if(map.texture2D)
@@ -191,6 +198,65 @@ public class TileMapEditor : Editor
         {
             if (tile.GetComponents<NormalTile>() != null)
                 DestroyImmediate(tile.GetComponent<NormalTile>());
+        }
+
+        if (map.addJumpTileScript)
+        {
+            if (tile.GetComponent<JumpTile>() == null)
+                tile.AddComponent<JumpTile>();
+        }
+        else
+        {
+            if (tile.GetComponents<JumpTile>() != null)
+                DestroyImmediate(tile.GetComponent<JumpTile>());
+        }
+        if (map.addPoisonTileScript)
+        {
+            if (tile.GetComponent<PoisonTile>() == null)
+                tile.AddComponent<PoisonTile>();
+        }
+        else
+        {
+            if (tile.GetComponents<PoisonTile>() != null)
+                DestroyImmediate(tile.GetComponent<PoisonTile>());
+        }
+        if (map.addAnimatorController)
+        {
+            if (tile.GetComponent<Animator>() == null)
+                tile.AddComponent<Animator>();
+        }
+        else
+        {
+            if (tile.GetComponents<Animator>() != null)
+                DestroyImmediate(tile.GetComponent<Animator>());
+        }
+        if (map.addSpikeScript)
+        {
+            if (tile.GetComponent<Spike>() == null)
+                tile.AddComponent<Spike>();
+        }
+        else
+        {
+            if (tile.GetComponents<Spike>() != null)
+                DestroyImmediate(tile.GetComponent<Spike>());
+        }
+        if (map.addLayer)
+        {
+            tile.layer = 8;
+        }
+        else
+        {
+            tile.layer = 0;
+        }
+        if (map.addCoinScript)
+        {
+            if (tile.GetComponent<Coin>() == null)
+                tile.AddComponent<Coin>();
+        }
+        else
+        {
+            if (tile.GetComponents<Coin>() != null)
+                DestroyImmediate(tile.GetComponent<Coin>());
         }
     }
 
