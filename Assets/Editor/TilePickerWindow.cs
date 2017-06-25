@@ -16,7 +16,6 @@ public class TilePickerWindow : EditorWindow
     static void Init() 
     { 
         TilePickerWindow window = (TilePickerWindow)EditorWindow.GetWindow(typeof(TilePickerWindow));
-        window.title = "Tile Picker"; 
     }
 
     void OnGUI()

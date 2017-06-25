@@ -24,8 +24,8 @@ public class LevelBuilder : ScriptableWizard
 
     private void OnWizardCreate()
     {
-        GameObject emptyGameobject;
-        emptyGameobject = new GameObject(gameObjectName);
+
+        GameObject emptyGameobject = new GameObject(gameObjectName);
 
         /*Vector2 tilePosition = new Vector2(0, 0);
         for (int i = 0; i< totalSize.Count; i++)

@@ -13,13 +13,7 @@ public class CollisionState : MonoBehaviour
     Vector2 bottomPosition;
 
     [SerializeField]
-    float collisionRadius;
-
-	// Use this for initialization
-	void Start ()
-    {
-		
-	}
+    Vector2 collisionSize;
 	
 	void FixedUpdate ()
     {
@@ -28,7 +22,7 @@ public class CollisionState : MonoBehaviour
         pos.x += transform.position.x;
         pos.y += transform.position.y;
 
-        standing = Physics2D.OverlapCircle(pos, collisionRadius, collisionLayer);
+        standing = Physics2D.OverlapCircle(pos, collisionSize.y, collisionLayer);
 	}
 
     private void OnDrawGizmos()
@@ -40,6 +34,6 @@ public class CollisionState : MonoBehaviour
         pos.x += transform.position.x;
         pos.y += transform.position.y;
 
-        Gizmos.DrawWireSphere(pos, collisionRadius);
+        Gizmos.DrawWireCube(pos, collisionSize);
     }
 }

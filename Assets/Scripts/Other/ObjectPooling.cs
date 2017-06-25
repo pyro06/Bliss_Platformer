@@ -7,7 +7,7 @@ public class ObjectPooling : MonoBehaviour
     public Transform bullet;
     public List<Transform> allBullets;
     public static ObjectPooling o;
-    int j = 0;
+
 
     private void Awake()
     {
