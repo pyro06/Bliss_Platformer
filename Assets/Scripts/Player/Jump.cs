@@ -14,17 +14,46 @@ public class Jump : AbstractPlayerBehavior
     [SerializeField]
     float tempJump;
 
+    [SerializeField]
+    Vector2 gravity;
+
+    [SerializeField]
+    float timer = 0;
+
+    [SerializeField]
+    float delayTimer;
+
     private void Start()
     {
         tempJump = jumpHeight;
     }
 
-    // Update is called once per frame
-    void Update ()
+    
+    
+
+    void DelayTimer()
     {
+        print("p");
+        if (timer < delayTimer)
+        {
+            collisionStateInstance.standing = true;
+            timer += Time.deltaTime;
+           
+        }
+        else
+        {
+            timer = 0;
+            collisionStateInstance.standing = false;
+        }
+    }
+
+    // Update is called once per frame
+    void FixedUpdate ()
+    {
+        
         if (inputManagerInstance.Jump() && collisionStateInstance.standing && !GameManager.gameManagerInstance.jumpColliding)
         {
-
+            
             jumpHeight = tempJump;
             rgbd.velocity = new Vector2(rgbd.velocity.x, jumpHeight);
         }
@@ -33,10 +62,7 @@ public class Jump : AbstractPlayerBehavior
             jumpHeight = jumpHeightOnJumpTile;
             rgbd.velocity = new Vector2(rgbd.velocity.x, jumpHeight);
         }
-        else
-        {
-            rgbd.velocity = new Vector2(rgbd.velocity.x, rgbd.velocity.y);
-        }
+       
 
         if (!GameManager.gameManagerInstance.playerAlive)
         {
@@ -45,6 +71,17 @@ public class Jump : AbstractPlayerBehavior
         else
         {
             rgbd.simulated = true;
-        } 
+        }
+
+
+        if (!collisionStateInstance.standing)
+        {
+            rgbd.velocity = new Vector2(rgbd.velocity.x, rgbd.velocity.y - gravity.y * Time.deltaTime);
+            if (rgbd.velocity.y < 0)
+            {
+                DelayTimer();
+            }
+        }
+
     }
 }

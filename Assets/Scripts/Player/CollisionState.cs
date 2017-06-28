@@ -2,18 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollisionState : MonoBehaviour
+public class CollisionState : AbstractPlayerBehavior
 {
     [SerializeField]
     LayerMask collisionLayer;
 
     public bool standing;
 
-    [SerializeField]
-    Vector2 bottomPosition;
+    //Vector2 bottomPosition;
 
-    [SerializeField]
-    Vector2 collisionSize;
+    //Vector2 collisionSize;
 
     float skinWidth = 0.015f;
 
@@ -22,10 +20,20 @@ public class CollisionState : MonoBehaviour
     [SerializeField]
     int verticalRaycount;
 
+    [SerializeField]
+    float distanceFromGround;
+
+    [SerializeField]
+    float rayDistance;
+
     float horizontalRayspacing;
     float verticalRayspacing;
 
     SpriteRenderer sprite;
+
+    bool groundHit = false;
+
+    //CircleCollider2D col2D;
 
     struct RayCastOrigins
     {
@@ -38,23 +46,49 @@ public class CollisionState : MonoBehaviour
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
+        //col2D = GetComponent<CircleCollider2D>();
         CalculateRaySpacing();
+       
     }
 
     private void Update()
     {
+        standing = false;
         UpdateRaycastOrigins();
 
-        for(int i =0; i<verticalRaycount;i++)
+        for (int i = 0; i < verticalRaycount;i++)
         {
-            Debug.DrawRay(raycastOrigins.bottomLeft + Vector2.right * verticalRayspacing * i, Vector2.up * -2, Color.red);
+            if(standing)
+            {
+                continue;
+            }
+
+            Vector2 rayOrigin = raycastOrigins.bottomLeft + (Vector2.right * verticalRayspacing * i);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin,Vector2.down,rayDistance,collisionLayer);
+            
+            Debug.DrawRay(rayOrigin, Vector2.down * rayDistance, Color.red);
+            
+           
+            if (hit && hit.distance < distanceFromGround)
+            {
+                
+                standing = true;
+            }
+            else
+            {
+                standing = false;
+               //StartCoroutine(JumpDelay());
+            }
         }
+        
+      
+
     }
 
     void UpdateRaycastOrigins()
     {
         Bounds bounds = sprite.bounds;
-        bounds.Expand (skinWidth * 2);
+        bounds.Expand (skinWidth * -2);
 
         raycastOrigins.bottomLeft = new Vector2(bounds.min.x, bounds.min.y);
         raycastOrigins.bottomRight = new Vector2(bounds.max.x, bounds.min.y);
@@ -65,7 +99,7 @@ public class CollisionState : MonoBehaviour
     void CalculateRaySpacing()
     {
         Bounds bounds = sprite.bounds;
-        bounds.Expand(skinWidth * 2);
+        bounds.Expand(skinWidth * -2);
 
         horizontalRaycount = Mathf.Clamp(horizontalRaycount, 2, int.MaxValue);
         verticalRaycount = Mathf.Clamp(verticalRaycount, 2, int.MaxValue);
@@ -73,28 +107,11 @@ public class CollisionState : MonoBehaviour
         horizontalRayspacing = bounds.size.y / (horizontalRaycount - 1);
         verticalRayspacing = bounds.size.x / (verticalRaycount - 1);
     }
-	
-	/*void FixedUpdate ()
+
+    IEnumerator JumpDelay()
     {
-        //pos represents the position of the gizmo. bottomposition is the offset
-        Vector2 pos = bottomPosition;
-        pos.x += transform.position.x;
-        pos.y += transform.position.y;
-
-        standing = Physics2D.OverlapBox(pos, collisionSize, 90, collisionLayer);
-	}*/
-
-    /*private void OnDrawGizmos()
-    {
-        Gizmos.color =  Color.red;
-
-        //pos represents the position of the gizmo. bottomposition is the offset
-        Vector2 pos = bottomPosition;
-        pos.x += transform.position.x;
-        pos.y += transform.position.y;
-
-        Gizmos.DrawWireCube(pos, collisionSize);
-    }*/
-
-
+        yield return new WaitForSeconds(0.3f);
+        standing = false;
+        StopCoroutine(JumpDelay());
+    }
 }

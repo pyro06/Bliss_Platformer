@@ -10,6 +10,8 @@ public class PlayerMovement : AbstractPlayerBehavior
     [SerializeField]
     float tempSpeed;
 
+   
+
     SpriteRenderer playerSprite;
 
 	// Use this for initialization
