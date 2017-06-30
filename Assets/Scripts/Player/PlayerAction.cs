@@ -86,9 +86,7 @@ public class PlayerAction : MonoBehaviour
     private void FixedUpdate()
     {
         //Movement
-        float horizontal = inputManagerInstance.SetDirection() * moveSpeed;
-        rgbd.velocity = new Vector2(horizontal, rgbd.velocity.y);
-        containerInstance.Init(containerInstance._trailLength, containerInstance._spawnRate, playerSprite, containerInstance._effectDuration, containerInstance._desiredColor);
+        Movement();
 
 
         //Jumping
@@ -96,28 +94,20 @@ public class PlayerAction : MonoBehaviour
         {
             if ((grounded || fallFromEdge) && !isJumping )
             {
-                Jump();
-                
+                Jump();   
             }
         }
 
-        //Checking for gravity
+        
         if (!grounded)
-        {
+        {   //gravity
             rgbd.velocity = new Vector2(rgbd.velocity.x, rgbd.velocity.y - gravity.y * Time.deltaTime);
-            
+            //adding delay to jump before falling down
             if(rgbd.velocity.y < 0 && !isJumping)
             {
                 DelayTimer();
             }
         }
-
-        /*if (isJumping && rgbd.velocity.y < 0)
-        {
-            isJumping = false;
-            addDelay = false;
-        }*/
-
     }
     void Jump()
     {
@@ -154,33 +144,7 @@ public class PlayerAction : MonoBehaviour
 
         UpdateRaycastOrigins();
 
-        for (int i = 0; i < verticalRaycount; i++)
-        {
-            if (grounded)
-            {   
-                continue;
-            }
-
-            Vector2 rayOrigin = raycastOrigins.bottomLeft + (Vector2.right * verticalRayspacing * i);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, rayDistance, collisionLayer);
-            Debug.DrawRay(rayOrigin, Vector2.down * rayDistance, Color.red);
-
-            if (hit && hit.distance < distanceFromGround)
-            {
-                grounded = true;
-                fallFromEdge = false;
-                //jump ending
-                if (isJumping)
-                {
-                    isJumping = false;
-                }
-            }
-            else
-            {
-                grounded = false;
-
-            }
-        }
+        RayCasting();
     }
 
 
@@ -220,5 +184,43 @@ public class PlayerAction : MonoBehaviour
 
         //horizontalRayspacing = bounds.size.y / (horizontalRaycount - 1);
         verticalRayspacing = bounds.size.x / (verticalRaycount - 1);
+    }
+
+    void Movement()
+    {
+        float horizontal = inputManagerInstance.SetDirection() * moveSpeed;
+        rgbd.velocity = new Vector2(horizontal, rgbd.velocity.y);
+        containerInstance.Init(containerInstance._trailLength, containerInstance._spawnRate, playerSprite, containerInstance._effectDuration, containerInstance._desiredColor);
+    }
+
+    void RayCasting()
+    {
+        for (int i = 0; i < verticalRaycount; i++)
+        {
+            if (grounded)
+            {
+                continue;
+            }
+
+            Vector2 rayOrigin = raycastOrigins.bottomLeft + (Vector2.right * verticalRayspacing * i);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, rayDistance, collisionLayer);
+            Debug.DrawRay(rayOrigin, Vector2.down * rayDistance, Color.red);
+
+            if (hit && hit.distance < distanceFromGround)
+            {
+                grounded = true;
+                fallFromEdge = false;
+                //jump ending
+                if (isJumping)
+                {
+                    isJumping = false;
+                }
+            }
+            else
+            {
+                grounded = false;
+
+            }
+        }
     }
 }
