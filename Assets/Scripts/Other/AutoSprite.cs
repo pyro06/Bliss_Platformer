@@ -9,7 +9,7 @@ public class AutoSprite : MonoBehaviour
 	private const string GhostMaterialPath = "Materials/GhostMaterial";
 	private Material _material;
 	private float _dissapearTimer;
-	private Sprite _sprite;
+	//private Sprite _sprite;
 	private SpriteRenderer _renderer;
 	private float _startingAlpha;
 	private Vector3 _offset;
@@ -63,7 +63,7 @@ public class AutoSprite : MonoBehaviour
 		_dissapearTimer = dissapearTimer;
 		SpriteRenderer.sortingLayerID = sortingId;
 		SpriteRenderer.sortingOrder = sortingOrder;
-		_sprite = sprite;
+		//_sprite = sprite;
 		SpriteRenderer.sprite = sprite;
 		
 		_offset = offset;
@@ -83,7 +83,7 @@ public class AutoSprite : MonoBehaviour
 	public void Init(float dissapearTimer, float startingAlpha, Sprite sprite,int sortingId ,int  sortingOrder   ,
 	                 Transform referencedTransform, Vector3 offset, Color desiredColor)
 	{
-		startingAlpha = startingAlpha;
+		_startingAlpha = startingAlpha;
 		_desiredColor = desiredColor;
 		_desiredColor.a = _startingAlpha;
 		GhostMaterial.SetColor("_Color", _desiredColor);
@@ -92,7 +92,7 @@ public class AutoSprite : MonoBehaviour
 		_dissapearTimer = dissapearTimer;
 		SpriteRenderer.sortingLayerID = sortingId;
 		SpriteRenderer.sortingOrder = sortingOrder;
-		_sprite = sprite;
+		//_sprite = sprite;
 		SpriteRenderer.sprite = sprite;
 		
 		_offset = offset;
