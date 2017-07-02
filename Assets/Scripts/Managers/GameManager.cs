@@ -35,34 +35,20 @@ public class GameManager : MonoBehaviour
     public Coin[] totalNumberOfCoins;
     public float coinPercent;
 
-    //key variables
-    public int keysCollected;
-    public Key[] totalNoOfKeys;
-
-    //door variables
-    public bool unLockDoor;
+    //Level variables
+    public bool gotoNextLevel;
 
     private void Start()
     {
         playerAlive = true;
+        gotoNextLevel = false;
         timeManagerInstance = GetComponent<TimeManager>();
         totalNumberOfCoins = GameObject.FindObjectsOfType<Coin>();
-        totalNoOfKeys = GameObject.FindObjectsOfType<Key>();
     }
 
     private void Update()
     {
-        /*
-        //calculating the total coins collected
-        coinPercent = (coinsCollected / totalNumberOfCoins.Length) * 100;
-        print(coinPercent);
-
-        //checking to see if all the keys are collected
-        if (keysCollected == totalNoOfKeys.Length)
-        {
-            print("Door opens");
-        }
-        */
+       
     }
 
 }

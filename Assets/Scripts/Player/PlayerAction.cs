@@ -11,7 +11,7 @@ public class PlayerAction : MonoBehaviour
     Container containerInstance;
 
     [SerializeField]
-    float jumpHeight;
+    float normalJumpHeight;
 
     [SerializeField]
     float jumpHeightOnJumpTile;
@@ -77,7 +77,7 @@ public class PlayerAction : MonoBehaviour
         inputManagerInstance = GetComponent<InputManager>();
         containerInstance = GetComponent<Container>();
         playerSprite = GetComponent<SpriteRenderer>();
-        tempJump = jumpHeight;
+        tempJump = normalJumpHeight;
         tempMoveSpeed = moveSpeed;
         
         CalculateRaySpacing();
@@ -116,13 +116,13 @@ public class PlayerAction : MonoBehaviour
         fallFromEdge = false;
             if (!GameManager.gameManagerInstance.jumpColliding)
             {
-                jumpHeight = tempJump;
-                rgbd.velocity = new Vector2(rgbd.velocity.x, jumpHeight);
+                normalJumpHeight = tempJump;
+                rgbd.velocity = new Vector2(rgbd.velocity.x, normalJumpHeight);
             }
             else
             {
-                jumpHeight = jumpHeightOnJumpTile;
-                rgbd.velocity = new Vector2(rgbd.velocity.x, jumpHeight);
+                normalJumpHeight = jumpHeightOnJumpTile;
+                rgbd.velocity = new Vector2(rgbd.velocity.x, normalJumpHeight);
             }
     }
 
