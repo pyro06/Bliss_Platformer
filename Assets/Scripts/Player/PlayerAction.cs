@@ -23,45 +23,62 @@ public class PlayerAction : MonoBehaviour
     Vector2 gravity;
 
     [SerializeField]
-    float timer = 0;
-
-    [SerializeField]
-    float delayTimer;
-
-    [SerializeField]
     float moveSpeed;
     [SerializeField]
     float tempMoveSpeed;
 
-    [SerializeField]
-    LayerMask collisionLayer;
-
-    public bool grounded;
-
     float skinWidth = 0.015f;
+
+    SpriteRenderer playerSprite;
+
+    [SerializeField]
+    bool isJumping;
+    [SerializeField]
+    bool fallFromEdge = false;
+
+    //raycasting related variables
+    [SerializeField]
+    float rayDistance;
+
+    float horizontalRayspacing;
+    float verticalRayspacing;
 
     [SerializeField]
     int horizontalRaycount;
     [SerializeField]
     int verticalRaycount;
 
+    //ground related all variables
+    [SerializeField]
+    LayerMask groundCollisionLayer;
+    [SerializeField]
+    bool grounded;
     [SerializeField]
     float distanceFromGround;
-
     [SerializeField]
-    float rayDistance;
+    float groundJumpTimer = 0;
 
-    //float horizontalRayspacing;
-    float verticalRayspacing;
-
-    SpriteRenderer playerSprite;
-
+    //Wall related all the variables
     [SerializeField]
-    bool isJumping;
-
+    float distanceFromWall;
     [SerializeField]
-    bool fallFromEdge= false;
-
+    Vector2 wallLeap;
+    [SerializeField]
+    bool wallSticking;
+    [SerializeField]
+    bool canWallJump;
+    [SerializeField]
+    float wallstickGravity;
+    [SerializeField]
+    LayerMask wallCollisionLayer;
+    RaycastHit2D rightHit;
+    RaycastHit2D leftHit;
+    [SerializeField]
+    int wallDir;
+    [SerializeField]
+    float wallJumpTimer = 0;
+    [SerializeField]
+    float delayTimer;
     struct RayCastOrigins
     {
         public Vector2 bottomLeft, bottomRight;
@@ -79,6 +96,7 @@ public class PlayerAction : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();
         tempJump = normalJumpHeight;
         tempMoveSpeed = moveSpeed;
+        canWallJump = false;
         
         CalculateRaySpacing();
     }
@@ -88,42 +106,48 @@ public class PlayerAction : MonoBehaviour
         //Movement
         Movement();
 
-
         //Jumping
         if (inputManagerInstance.Jump())
         {
             if ((grounded || fallFromEdge) && !isJumping )
             {
-                Jump();   
+                GroundJump();   
             }
         }
 
-        
         if (!grounded)
         {   //gravity
             rgbd.velocity = new Vector2(rgbd.velocity.x, rgbd.velocity.y - gravity.y * Time.deltaTime);
             //adding delay to jump before falling down
             if(rgbd.velocity.y < 0 && !isJumping)
             {
-                DelayTimer();
+                GroundJumpDelayTimer();
             }
         }
-    }
-    void Jump()
-    {
-        isJumping = true;
-        grounded = false;
-        fallFromEdge = false;
-            if (!GameManager.gameManagerInstance.jumpColliding)
+        
+        //adding a delay on the directions to wait for the player to jump before dropping off the wall
+        if (wallSticking && wallDir == -inputManagerInstance.SetDirection())
+        {
+            WallJumpDelayTimer();
+        }
+
+        if (wallSticking)
+        {
+            canWallJump = true;
+            OnWallStick();
+            if (inputManagerInstance.Jump())
             {
-                normalJumpHeight = tempJump;
-                rgbd.velocity = new Vector2(rgbd.velocity.x, normalJumpHeight);
+                if (canWallJump)
+                {   //when direction is opposite to the wall
+                    WallJump();
+                }
             }
-            else
-            {
-                normalJumpHeight = jumpHeightOnJumpTile;
-                rgbd.velocity = new Vector2(rgbd.velocity.x, normalJumpHeight);
-            }
+        }
+        else
+        {
+            canWallJump = false;
+            wallJumpTimer = 0;
+        }
     }
 
     // Update is called once per frame
@@ -144,22 +168,62 @@ public class PlayerAction : MonoBehaviour
 
         UpdateRaycastOrigins();
 
-        RayCasting();
+        VerticalRayCasting();
+
+        HorizontalRayCasting();
     }
 
-
-    void DelayTimer()
+    void GroundJump()
     {
-        if (timer < Time.deltaTime)
+        isJumping = true;
+        grounded = false;
+        fallFromEdge = false;
+        if (!GameManager.gameManagerInstance.jumpColliding)
+        {
+            normalJumpHeight = tempJump;
+            rgbd.velocity = new Vector2(rgbd.velocity.x, normalJumpHeight);
+        }
+        else
+        {
+            normalJumpHeight = jumpHeightOnJumpTile;
+            rgbd.velocity = new Vector2(rgbd.velocity.x, normalJumpHeight);
+        }
+    }
+
+    void WallJump()
+    {
+        if (wallDir == -inputManagerInstance.SetDirection())
+        {
+            rgbd.velocity = new Vector2(-wallDir * wallLeap.x, wallLeap.y);
+        }
+    }
+
+    void GroundJumpDelayTimer()
+    {
+        if (groundJumpTimer < Time.deltaTime)
         {
             //some condition to make him jump from edge
             fallFromEdge = true;
-            timer += Time.deltaTime;
+            groundJumpTimer += Time.deltaTime;
         }
         else
         {
             fallFromEdge = false;
-            timer = 0;
+            groundJumpTimer = 0;
+        }
+    }
+
+    void WallJumpDelayTimer()
+    {
+        if (wallJumpTimer < delayTimer)
+        {
+            wallJumpTimer += Time.deltaTime;
+            rgbd.velocity = new Vector2(0, rgbd.velocity.y);
+        }
+        else
+        {
+            wallJumpTimer = 0;
+            rgbd.velocity = new Vector2(rgbd.velocity.x, rgbd.velocity.y);
         }
     }
 
@@ -182,7 +246,7 @@ public class PlayerAction : MonoBehaviour
         horizontalRaycount = Mathf.Clamp(horizontalRaycount, 2, int.MaxValue);
         verticalRaycount = Mathf.Clamp(verticalRaycount, 2, int.MaxValue);
 
-        //horizontalRayspacing = bounds.size.y / (horizontalRaycount - 1);
+        horizontalRayspacing = bounds.size.y / (horizontalRaycount - 1);
         verticalRayspacing = bounds.size.x / (verticalRaycount - 1);
     }
 
@@ -193,7 +257,7 @@ public class PlayerAction : MonoBehaviour
         containerInstance.Init(containerInstance._trailLength, containerInstance._spawnRate, playerSprite, containerInstance._effectDuration, containerInstance._desiredColor);
     }
 
-    void RayCasting()
+    void VerticalRayCasting()
     {
         for (int i = 0; i < verticalRaycount; i++)
         {
@@ -203,7 +267,7 @@ public class PlayerAction : MonoBehaviour
             }
 
             Vector2 rayOrigin = raycastOrigins.bottomLeft + (Vector2.right * verticalRayspacing * i);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, rayDistance, collisionLayer);
+            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.down, rayDistance, groundCollisionLayer);
             Debug.DrawRay(rayOrigin, Vector2.down * rayDistance, Color.red);
 
             if (hit && hit.distance < distanceFromGround)
@@ -222,5 +286,37 @@ public class PlayerAction : MonoBehaviour
 
             }
         }
+    }
+    
+    void HorizontalRayCasting()
+    {
+        for(int i = 0; i < horizontalRaycount; i++)
+        {
+       
+            Vector2 rightRayOrigin = raycastOrigins.topRight + (Vector2.down * horizontalRayspacing * i);
+            Vector2 leftRayOrigin = raycastOrigins.topLeft + (Vector2.down * horizontalRayspacing * i);
+
+            rightHit = Physics2D.Raycast(rightRayOrigin, Vector2.right, rayDistance,wallCollisionLayer);
+            leftHit = Physics2D.Raycast(leftRayOrigin, Vector2.right * -1, rayDistance, wallCollisionLayer);
+
+            Debug.DrawRay(rightRayOrigin, Vector2.right * rayDistance, Color.red);
+            Debug.DrawRay(leftRayOrigin, Vector2.left * rayDistance, Color.red);
+
+            if (((rightHit && rightHit.distance < distanceFromWall) || (leftHit && leftHit.distance < distanceFromWall)) && !grounded && rgbd.velocity.y < 0)
+            {
+                wallSticking = true;
+            }
+            else
+            {
+                wallSticking = false;
+            }
+        }
+
+        wallDir = (leftHit) ? -1 : 1;
+    }
+
+    void OnWallStick()
+    {
+        rgbd.velocity = new Vector2(rgbd.velocity.x, -wallstickGravity);
     }
 }
