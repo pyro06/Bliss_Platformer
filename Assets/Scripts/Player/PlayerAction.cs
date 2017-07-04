@@ -79,12 +79,15 @@ public class PlayerAction : MonoBehaviour
     float wallJumpTimer = 0;
     [SerializeField]
     float delayTimer;
-    struct RayCastOrigins
+
+    [System.Serializable]
+    public struct RayCastOrigins
     {
         public Vector2 bottomLeft, bottomRight;
         public Vector2 topLeft, topRight;
     }
 
+    [SerializeField]
     RayCastOrigins raycastOrigins;
 
     // Use this for initialization
@@ -115,7 +118,7 @@ public class PlayerAction : MonoBehaviour
             }
         }
 
-        if (!grounded)
+        if (!grounded && !wallSticking)
         {   //gravity
             rgbd.velocity = new Vector2(rgbd.velocity.x, rgbd.velocity.y - gravity.y * Time.deltaTime);
             //adding delay to jump before falling down
@@ -194,7 +197,8 @@ public class PlayerAction : MonoBehaviour
     {
         if (wallDir == -inputManagerInstance.SetDirection())
         {
-            rgbd.velocity = new Vector2(-wallDir * wallLeap.x, wallLeap.y);
+            //rgbd.velocity = new Vector2(-wallDir * wallLeap.x, wallLeap.y);
+            GroundJump();
         }
     }
 
@@ -305,10 +309,13 @@ public class PlayerAction : MonoBehaviour
             if (((rightHit && rightHit.distance < distanceFromWall) || (leftHit && leftHit.distance < distanceFromWall)) && !grounded && rgbd.velocity.y < 0)
             {
                 wallSticking = true;
+                isJumping = false;
+   
             }
             else
             {
                 wallSticking = false;
+               
             }
         }
 
@@ -317,6 +324,6 @@ public class PlayerAction : MonoBehaviour
 
     void OnWallStick()
     {
-        rgbd.velocity = new Vector2(rgbd.velocity.x, -wallstickGravity);
+        rgbd.velocity = new Vector2(rgbd.velocity.x, rgbd.velocity.y - wallstickGravity *Time.deltaTime);
     }
 }

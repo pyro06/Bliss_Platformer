@@ -46,9 +46,5 @@ public class GameManager : MonoBehaviour
         totalNumberOfCoins = GameObject.FindObjectsOfType<Coin>();
     }
 
-    private void Update()
-    {
-       
-    }
 
 }
