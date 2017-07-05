@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Wall related variables
     [SerializeField]
-    bool wallSticking;
+    bool wallSticking, wallHit;
     [SerializeField]
     float wallStickGravity;
     [SerializeField]
@@ -57,6 +57,10 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     Vector2 raySize, raySizeHorizontal;
+    int temp = 0;
+
+    [SerializeField]
+    int playerDir;
 
     private void Start()
     {
@@ -94,8 +98,7 @@ public class PlayerMovement : MonoBehaviour
         //ground check
         VerticalRayCasting();
 
-        //wall check
-        HorizontalRayCasting();
+        
 
         //movement
         axisMovement = new Vector2(horizontal * movementSpeed, axisMovement.y);
@@ -106,12 +109,29 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
 
-        //WallSticking
+        //Walljumping 
+        if(isJumpInput && wallHit && !isJumping && canJump)
+        {
+            wallSticking = true;
+        }
 
+        //wallsticking to keep it running per frame for smoothness
+        if(wallSticking)
+        {
+            //Apply Wallhit velocity
+            WallJumping();
+        }
+        
+        
+
+        //WallSticking
+        
         //Gravity
         if(!isGrounded)
         {
             Gravity();
+            //wall check
+            HorizontalRayCasting();
         }
 
         //setting of player movement to the rigidbody velocity        
@@ -147,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
             {
                
                 isGrounded = true;
-
+                wallSticking = false;
                 //resetting jump and gravity when vely is decraesing
                 if (axisMovement.y < 0)
                 {
@@ -169,25 +189,30 @@ public class PlayerMovement : MonoBehaviour
     {
         for (int i = -1; i < 2; i++)
         {
-           
-
+            //horizontal ray casting for wall detection
             raySizeHorizontal = new Vector2(transform.position.x + (playerSprite.bounds.size.x / 2) * GetSign(horizontal),
                                   transform.position.y - (playerSprite.bounds.size.y / 2 - offset) * i);
 
-
-
-            hitHorizontal = Physics2D.Raycast(raySize, Vector2.right * GetSign(horizontal), rayDistance, wallCollisionLayer);
+            hitHorizontal = Physics2D.Raycast(raySizeHorizontal, Vector2.right * GetSign(horizontal), rayDistance, wallCollisionLayer);
             Debug.DrawRay(raySizeHorizontal, Vector2.right * GetSign(horizontal) * rayDistance ,Color.red);
-
+            playerDir = GetSign(horizontal);
             if (hitHorizontal && hitHorizontal.distance < thresholdFromWall)
             {
                 //jumpreseting when wallsticking
-                wallSticking = true;
-                JumpReset();
+                //wallSticking = true;
+                wallHit = true;
+                //making axis movement y to 0 so that the player doesnt move upward when touching the wall also
+                //resetting the jump
+                if(isJumping)
+                {
+                    axisMovement.y = 0;
+                    JumpReset();
+                }
             }
             else
             {
-                wallSticking = false;
+                wallHit = false;
+                //wallSticking = false;
             }
           
         }
@@ -217,8 +242,8 @@ public class PlayerMovement : MonoBehaviour
     //set the player gravity
     void Gravity()
     {
-        //wallstick gravity when sticking the walls
-        if (wallSticking)
+        //wallstick gravity when hit the walls
+        if (wallHit)
         {
             axisMovement.y -= wallStickGravity * Time.deltaTime;
         }//normal gravity when inair
@@ -251,15 +276,36 @@ public class PlayerMovement : MonoBehaviour
         isJumpInput = false;
     }
 
+ 
+    //manually changing the direction of the ray with respect to the sign set
     int GetSign(float value)
     {
-        if(value == 0)
+       if(value == 0)
         {
-            return 0;
+            return temp;
         }
-        else
+
+       else
         {
-            return (value > 0) ? 1 : -1;
+            int sign = (value > 0) ? 1 : -1;
+
+            if (temp != sign)
+            {
+                temp = sign;
+            }
+
+            return temp;
+        }
+
+      
+    }
+
+    //wall jumping function to check different inputs
+    void WallJumping()
+    {
+        if (horizontal == 0)
+        {
+            axisMovement.x = playerDir * -1 * 3;
         }
     }
 }
