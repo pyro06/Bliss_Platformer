@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Wall related variables
     [SerializeField]
-    bool wallSticking, wallHit;
+    bool wallSticking;
     [SerializeField]
     float wallStickGravity;
     [SerializeField]
@@ -61,6 +61,12 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     int playerDir;
+    [SerializeField]
+    float wallJumpHeight;
+    [SerializeField]
+    float timer = 0;
+    [SerializeField]
+    float wallJumpDelayTimer;
 
     private void Start()
     {
@@ -68,7 +74,7 @@ public class PlayerMovement : MonoBehaviour
         rgbd = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         containerInstance = GetComponent<Container>();
-
+        
     }
 
 
@@ -110,16 +116,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Walljumping 
-        if(isJumpInput && wallHit && !isJumping && canJump)
-        {
-            wallSticking = true;
-        }
-
-        //wallsticking to keep it running per frame for smoothness
-        if(wallSticking)
+        if(isJumpInput && wallSticking && !isJumping && canJump)
         {
             //Apply Wallhit velocity
             WallJumping();
+        }
+
+        if (wallSticking && horizontal != 0 && playerDir == -GetSign(horizontal))
+        {
+            WallJumpDelay();
         }
         
         
@@ -130,12 +135,21 @@ public class PlayerMovement : MonoBehaviour
         if(!isGrounded)
         {
             Gravity();
-            //wall check
-            HorizontalRayCasting();
+            if (!wallSticking && horizontal != 0)
+            {
+                //wall check
+                HorizontalRayCasting();
+            }
+            
         }
 
+        
         //setting of player movement to the rigidbody velocity        
         rgbd.velocity = axisMovement;
+      
+        
+        
+        
        
     }
 
@@ -168,6 +182,7 @@ public class PlayerMovement : MonoBehaviour
                
                 isGrounded = true;
                 wallSticking = false;
+                timer = 0;
                 //resetting jump and gravity when vely is decraesing
                 if (axisMovement.y < 0)
                 {
@@ -196,11 +211,11 @@ public class PlayerMovement : MonoBehaviour
             hitHorizontal = Physics2D.Raycast(raySizeHorizontal, Vector2.right * GetSign(horizontal), rayDistance, wallCollisionLayer);
             Debug.DrawRay(raySizeHorizontal, Vector2.right * GetSign(horizontal) * rayDistance ,Color.red);
             playerDir = GetSign(horizontal);
+
             if (hitHorizontal && hitHorizontal.distance < thresholdFromWall)
             {
                 //jumpreseting when wallsticking
-                //wallSticking = true;
-                wallHit = true;
+                wallSticking = true;
                 //making axis movement y to 0 so that the player doesnt move upward when touching the wall also
                 //resetting the jump
                 if(isJumping)
@@ -211,8 +226,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                wallHit = false;
-                //wallSticking = false;
+                wallSticking = false;
             }
           
         }
@@ -243,7 +257,7 @@ public class PlayerMovement : MonoBehaviour
     void Gravity()
     {
         //wallstick gravity when hit the walls
-        if (wallHit)
+        if (wallSticking)
         {
             axisMovement.y -= wallStickGravity * Time.deltaTime;
         }//normal gravity when inair
@@ -265,8 +279,21 @@ public class PlayerMovement : MonoBehaviour
         isJumping = true;
         canJump = false;
         isGrounded = false;
+        //wall jump timer
+        timer = 0;
 
         axisMovement = new Vector2(axisMovement.x, jumpHeight);
+    }
+
+    void WallJump()
+    {
+        isJumping = true;
+        canJump = false;
+        isGrounded = false;
+        //wall jump timer
+        timer = 0;
+
+        axisMovement = new Vector2(axisMovement.x, wallJumpHeight);
     }
     //player jump reset values when ater jumping
     void JumpReset()
@@ -302,10 +329,32 @@ public class PlayerMovement : MonoBehaviour
 
     //wall jumping function to check different inputs
     void WallJumping()
-    {
-        if (horizontal == 0)
+    {   //jump opposite/ same player direction to the wall
+        if (playerDir == -GetSign(horizontal))
         {
-            axisMovement.x = playerDir * -1 * 3;
+            WallJump();
+            wallSticking = false;
+        }
+        else
+        {
+            isJumpInput = false;
+        }
+        //Jump same direction / player direction is same
+    }
+
+
+    void WallJumpDelay()
+    {
+        if (timer < wallJumpDelayTimer)
+        {
+            timer += Time.deltaTime;
+            //to keep the wall sticking
+            wallSticking = true;
+        }
+        else
+        {
+            timer = 0;
+            wallSticking = false;
         }
     }
 }
