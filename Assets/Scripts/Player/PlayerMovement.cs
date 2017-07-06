@@ -7,13 +7,15 @@ public class PlayerMovement : MonoBehaviour
     //player
     InputManager inputManagerInstance;
     Rigidbody2D rgbd;
-    [SerializeField]
-    Vector2 axisMovement;
+    
+    public Vector2 axisMovement;
     SpriteRenderer playerSprite;
     Container containerInstance;
+    [SerializeField]
+    Vector2 playerSpriteSize;
 
     //movement
-    float horizontal;
+    public float horizontal;
     [SerializeField]
     float movementSpeed;
 
@@ -43,7 +45,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     RaycastHit2D hit, hitHorizontal;
     [SerializeField]
-    float offset;
+    float spacingOffsetX;
+    [SerializeField]
+    float spacingOffsetY;
+    [SerializeField]
+    float skinWidthX;
+    [SerializeField]
+    float skinWidthY;
 
     //Wall related variables
     [SerializeField]
@@ -68,13 +76,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float wallJumpDelayTimer;
 
+    
+
     private void Start()
     {
         inputManagerInstance = GetComponent<InputManager>();
         rgbd = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         containerInstance = GetComponent<Container>();
-        
+        playerSpriteSize = playerSprite.bounds.size;
+        print(playerSpriteSize);
     }
 
 
@@ -104,8 +115,6 @@ public class PlayerMovement : MonoBehaviour
         //ground check
         VerticalRayCasting();
 
-        
-
         //movement
         axisMovement = new Vector2(horizontal * movementSpeed, axisMovement.y);
        
@@ -127,15 +136,11 @@ public class PlayerMovement : MonoBehaviour
             WallJumpDelay();
         }
         
-        
-
-        //WallSticking
-        
         //Gravity
         if(!isGrounded)
         {
             Gravity();
-            if (!wallSticking && horizontal != 0)
+            if (!wallSticking)
             {
                 //wall check
                 HorizontalRayCasting();
@@ -143,14 +148,8 @@ public class PlayerMovement : MonoBehaviour
             
         }
 
-        
         //setting of player movement to the rigidbody velocity        
         rgbd.velocity = axisMovement;
-      
-        
-        
-        
-       
     }
 
   
@@ -168,8 +167,8 @@ public class PlayerMovement : MonoBehaviour
             }
        
 
-            raySize = new Vector2(transform.position.x - (playerSprite.bounds.size.x / 2 - offset) * i,
-                                  transform.position.y - playerSprite.bounds.size.y / 2);
+            raySize = new Vector2(transform.position.x - (playerSprite.bounds.size.x / 2 - spacingOffsetX) * i,
+                                  transform.position.y - ((playerSprite.bounds.size.y - skinWidthY) / 2));
 
             
 
@@ -205,8 +204,8 @@ public class PlayerMovement : MonoBehaviour
         for (int i = -1; i < 2; i++)
         {
             //horizontal ray casting for wall detection
-            raySizeHorizontal = new Vector2(transform.position.x + (playerSprite.bounds.size.x / 2) * GetSign(horizontal),
-                                  transform.position.y - (playerSprite.bounds.size.y / 2 - offset) * i);
+            raySizeHorizontal = new Vector2(transform.position.x + ((playerSprite.bounds.size.x - skinWidthX) / 2) * GetSign(horizontal),
+                                  transform.position.y - (playerSprite.bounds.size.y / 2 - spacingOffsetY) * i);
 
             hitHorizontal = Physics2D.Raycast(raySizeHorizontal, Vector2.right * GetSign(horizontal), rayDistance, wallCollisionLayer);
             Debug.DrawRay(raySizeHorizontal, Vector2.right * GetSign(horizontal) * rayDistance ,Color.red);
@@ -237,7 +236,7 @@ public class PlayerMovement : MonoBehaviour
     {
         for (int i = -1; i < 2; i++)
         {
-            raySize = new Vector2(transform.position.x - (playerSprite.bounds.size.x / 2 - offset) * i,
+            raySize = new Vector2(transform.position.x - (playerSprite.bounds.size.x / 2 - spacingOffsetX) * i,
                                  transform.position.y - playerSprite.bounds.size.y / 2);
 
             if (hit && hit.distance < thresholdFromGround)
