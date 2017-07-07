@@ -6,22 +6,22 @@ public class PlayerAnimation : MonoBehaviour
 {
     Animator anim;
 
-    PlayerMovement playerMovementInstance;
 	// Use this for initialization
 	void Start ()
     {
         anim = GetComponent<Animator>();
-        playerMovementInstance = GetComponent<PlayerMovement>();
 	}
 
-    // Update is called once per frame
-    void Update()
+    public void PlayAnimations(float horizontalSpeed, bool jumpTakeOff,bool jumpLanding, bool onWallStick)
     {
-        Runnning();
-	}
+        anim.SetInteger("Speed",(int) horizontalSpeed);
 
-    void Runnning()
-    {
-        anim.SetInteger("Speed", Mathf.RoundToInt(playerMovementInstance.horizontal));
+        anim.SetBool("JumpTakeOff", jumpTakeOff);
+
+        anim.SetBool("JumpLanding", jumpLanding);
+
+        anim.SetBool("WallStick", onWallStick);
+
     }
+    
 }
