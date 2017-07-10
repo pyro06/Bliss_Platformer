@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class JumpTile : TileCollisionWithPlayer
 {
+   
+
     public override void Objective()
     {
         GameManager.gameManagerInstance.jumpColliding = true;
@@ -13,4 +16,6 @@ public class JumpTile : TileCollisionWithPlayer
     {
         GameManager.gameManagerInstance.jumpColliding = false;
     }
+
+   
 }

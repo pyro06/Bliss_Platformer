@@ -1,13 +1,13 @@
 fileFormatVersion: 2
 guid: 1d6182fdde1a2fe479fc5e1b823a6f70
-timeCreated: 1496366941
-licenseType: Free
+timeCreated: 1447685954
+licenseType: Store
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -40,7 +40,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 400
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites: []
     outline: []
-  spritePackingTag: PlayerDeath
+  spritePackingTag: 
   userData: 
   assetBundleName: 
   assetBundleVariant: 

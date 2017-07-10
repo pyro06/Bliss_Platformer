@@ -20,15 +20,11 @@ public class GameManager : MonoBehaviour
     }
 
     //Player related variables
-    public Player playerInstance;
-    public Vector2 spawnPoint;
+    
     public bool playerAlive;
 
     //JumpTile related variables
     public bool jumpColliding;
-
-    //time related variables
-    public TimeManager timeManagerInstance;
 
     //collectable variables
     public float coinsCollected;
@@ -42,7 +38,6 @@ public class GameManager : MonoBehaviour
     {
         playerAlive = true;
         gotoNextLevel = false;
-        timeManagerInstance = GetComponent<TimeManager>();
         totalNumberOfCoins = GameObject.FindObjectsOfType<Coin>();
     }
 

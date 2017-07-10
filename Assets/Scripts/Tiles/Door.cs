@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class Door : TileCollisionWithPlayer
 {
-
     public override void Objective()
     {
-        GameManager.gameManagerInstance.gotoNextLevel = true;
+        LevelManager.levelMangerInstance.FetchLevelInformation();
     }
-    
-    
 }

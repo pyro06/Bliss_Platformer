@@ -15,6 +15,6 @@ public class PlayerDeathCollisions : MonoBehaviour
 
     public virtual void Effect()
     {
-        GameManager.gameManagerInstance.timeManagerInstance.StartCoroutine("PlayerDeathAndSpawnTimer");
+        //GameManager.gameManagerInstance.timeManagerInstance.StartCoroutine("PlayerDeathAndSpawnTimer");
     }
 }

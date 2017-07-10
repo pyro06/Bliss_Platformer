@@ -9,16 +9,71 @@ public class Enemy : MonoBehaviour
 
     public GameObject playerPosition;
 
-	// Use this for initialization
-	void Start () {
+    [SerializeField]
+    int direction;
+
+    [SerializeField]
+    float speed;
+
+    [SerializeField]
+    Vector2 position;
+
+    [SerializeField]
+    Vector2 distance;
+
+    [SerializeField]
+    bool run;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        float distance = playerPosition.transform.position.x - enemyposition.transform.position.x;
-        float direction = Mathf.Sign(enemyposition.transform.right.x);
-        Debug.Log(direction);
+        distance = playerPosition.transform.position - enemyposition.transform.position;
+        Debug.Log(distance);
+        EnemyPlayerDistanceCheck();
+        EnemyMovement();
+
 	}
+
+    void EnemyMovement()
+    {
+       if (run)
+        {
+            speed = 5;
+        }
+       else if ((!run && position.x <= 18.99f && position.x >= -18.99f))
+        {
+            speed = 5;
+        }
+       else
+        {
+            speed = 0;
+        }
+
+            transform.Translate(Vector2.right * direction * speed * Time.deltaTime);
+            position = transform.position;
+            if ((position.x > 19) || (position.x <= -19))
+            {
+                direction = -direction;
+            }
+       
+        
+    }
+
+    void EnemyPlayerDistanceCheck()
+    {
+        Vector2 thresholdDistance = new Vector2(38, 0);
+        if ((distance.y >= -0.2f && distance.y < 2f && distance.x < thresholdDistance.x) )
+        {
+            run = true;
+        }
+        else
+        {
+            run = false;
+        }
+    }
 }
