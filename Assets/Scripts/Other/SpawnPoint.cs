@@ -7,9 +7,12 @@ public class SpawnPoint : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        LevelManager.levelMangerInstance.playerInstance.transform.position = transform.position;
-        print("spawn");
+        ResetPlayerSpawnPerLevel();
 	}
 	
-	
+	void ResetPlayerSpawnPerLevel()
+    {
+        LevelManager.levelMangerInstance.playerInstance.transform.position = transform.position;
+        LevelManager.levelMangerInstance.playerPosition = transform.position;
+    }
 }

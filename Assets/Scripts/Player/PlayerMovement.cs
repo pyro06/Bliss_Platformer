@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     EdgeCollider2D playerCollider;
     PlayerAnimation playerAnimationInstance;
+    [SerializeField]
+    float energy;
 
     //movement
     float horizontal;
@@ -38,6 +40,10 @@ public class PlayerMovement : MonoBehaviour
     bool isJumpInput;
     [SerializeField]
     bool jumpLand;
+    [SerializeField]
+    bool fallFromEdge;
+    [SerializeField]
+    float groundJumpDelayTimer;
 
     //Raycasting
     [SerializeField]
@@ -93,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<EdgeCollider2D>();
         playerAnimationInstance = GetComponent<PlayerAnimation>();
         playerFacingDirection = 1;
+        energy = 100;
     }
 
 
@@ -119,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
         }
         transform.localScale = new Vector2(playerFacingDirection, transform.localScale.y);
 
-        
+        EnergyUsage();
 
 #if UNITY_EDITOR
         DrawingOfRays();
@@ -139,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
         
        
         //jumping
-        if (isJumpInput && isGrounded && !isJumping && canJump)
+        if (isJumpInput && (isGrounded || fallFromEdge) && !isJumping && canJump)
         {
             Jump();
         }
@@ -203,6 +210,7 @@ public class PlayerMovement : MonoBehaviour
                
                 isGrounded = true;
                 wallSticking = false;
+                fallFromEdge = false;
                 timer = 0;
                 
                 //animations being called
@@ -298,6 +306,7 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpLand = true;
             isJumpInput = false;
+            GroundJumpDelay();
         }
     }
 
@@ -392,6 +401,28 @@ public class PlayerMovement : MonoBehaviour
         {
             timer = 0;
             wallSticking = false;
+        }
+    }
+    void GroundJumpDelay()
+    {
+        if (timer < groundJumpDelayTimer)
+        {
+            //some condition to make him jump from edge
+            fallFromEdge = true;
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            fallFromEdge = false;
+            timer = 0;
+        }
+    }
+
+    void EnergyUsage()
+    {
+        if (axisMovement.x != 0 || axisMovement.y != 0)
+        {
+            energy -= 0.01f;
         }
     }
 }

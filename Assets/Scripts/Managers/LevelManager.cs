@@ -12,6 +12,8 @@ public class LevelManager : MonoBehaviour
 
     public Player playerInstance;
 
+    public Vector2 playerPosition;
+
     private static LevelManager levelManager;
 
     public static LevelManager levelMangerInstance
@@ -26,7 +28,8 @@ public class LevelManager : MonoBehaviour
     {
         levelManager = this;
         currentLevelNo = 0;
-        LoadCurrentLevel();
+        //LoadCurrentLevel();
+        
         
     }
 
@@ -38,7 +41,6 @@ public class LevelManager : MonoBehaviour
     void LoadCurrentLevel()
     {
         levels[currentLevelNo].gameObject.SetActive(true);
-
     }
 
     void LoadNextLevel()
@@ -46,5 +48,10 @@ public class LevelManager : MonoBehaviour
         levels[currentLevelNo].gameObject.SetActive(false);
         currentLevelNo++;
         levels[currentLevelNo].gameObject.SetActive(true);
+    }
+
+    public void ReSpawnPlayerSameLevel()
+    {
+        playerInstance.transform.position = playerPosition;
     }
 }
