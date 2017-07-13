@@ -14,7 +14,6 @@ public class PlayerMovement : MonoBehaviour
     Vector2 playerSpriteSize;
     [SerializeField]
     EdgeCollider2D playerCollider;
-    PlayerAnimation playerAnimationInstance;
     [SerializeField]
     float energy;
 
@@ -22,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
     float horizontal;
     [SerializeField]
     float movementSpeed;
-    [SerializeField]
-    float playerFacingDirection;
 
     //jumping
     [SerializeField]
@@ -43,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     bool fallFromEdge;
     [SerializeField]
-    float groundJumpDelayTimer;
+    float jumpDelayTimer;
 
     //Raycasting
     [SerializeField]
@@ -76,11 +73,9 @@ public class PlayerMovement : MonoBehaviour
     float thresholdFromWall;
     [SerializeField]
     LayerMask wallCollisionLayer;
-
     [SerializeField]
     Vector2 raySize, raySizeHorizontal;
     int temp = 0;
-
     [SerializeField]
     int playerDir;
     [SerializeField]
@@ -88,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float timer = 0;
     [SerializeField]
-    float wallJumpDelayTimer;
+    bool playerOnGround;
     
 
     private void Start()
@@ -98,8 +93,6 @@ public class PlayerMovement : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();
         containerInstance = GetComponent<Container>();
         playerCollider = GetComponent<EdgeCollider2D>();
-        playerAnimationInstance = GetComponent<PlayerAnimation>();
-        playerFacingDirection = 1;
         energy = 100;
     }
 
@@ -116,22 +109,12 @@ public class PlayerMovement : MonoBehaviour
             isJumpInput = inputManagerInstance.Jump();
         }
 
-        //which direction is the player facing
-        if (horizontal > 0)
-        {
-            playerFacingDirection = 1;
-        }
-        else if (horizontal < 0)
-        {
-            playerFacingDirection = -1;
-        }
-        transform.localScale = new Vector2(playerFacingDirection, transform.localScale.y);
-
         EnergyUsage();
 
 #if UNITY_EDITOR
         DrawingOfRays();
 #endif
+        containerInstance.Init(containerInstance._trailLength, containerInstance._spawnRate, playerSprite, containerInstance._effectDuration, containerInstance._desiredColor);
     }
 
     private void FixedUpdate()
@@ -141,8 +124,6 @@ public class PlayerMovement : MonoBehaviour
 
         //ground check
         VerticalRayCasting();
-
-        
 
         //movement
         axisMovement = new Vector2(horizontal * movementSpeed, axisMovement.y);
@@ -160,38 +141,29 @@ public class PlayerMovement : MonoBehaviour
             //Apply Wallhit velocity
             WallJumping();
         }
-
-        if (wallSticking && horizontal != 0 && playerDir == -GetSign(horizontal))
-        {
-            WallJumpDelay();
-        }
         
         //Gravity
         if(!isGrounded)
         {
+            playerOnGround = false;
             Gravity();
             //doing wallsticking only when negative gravity is affecting
-            if (!wallSticking && jumpLand)
+            if (jumpLand)
             {
                 //wall check
                 HorizontalRayCasting();
             }
             GravityIsActing();
         }
-        /*else
+        else
         {
-            if (horizontal != 0)
-            {
-                playerSprite.flipX = false;
-            }
-        }*/
-
+            playerOnGround = true;
+            HorizontalRayCasting();
+        }
         //setting of player movement to the rigidbody velocity        
         rgbd.velocity = axisMovement;
         
     }
-
-  
 
     //ground check function
     void VerticalRayCasting()
@@ -216,8 +188,6 @@ public class PlayerMovement : MonoBehaviour
                 wallSticking = false;
                 fallFromEdge = false;
                 timer = 0;
-                //animations being called
-                playerAnimationInstance.PlayAnimations(horizontal, isJumping, jumpLand,wallSticking);
                 //resetting jump and gravity when vely is decraesing
                 if (axisMovement.y < 0)
                 {
@@ -227,9 +197,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                
                 isGrounded = false;
-                playerAnimationInstance.PlayAnimations(0, isJumping, jumpLand,wallSticking);
             }
         }
     }
@@ -245,27 +213,31 @@ public class PlayerMovement : MonoBehaviour
             hitHorizontal = Physics2D.Raycast(raySizeHorizontal, Vector2.right * GetSign(horizontal), rayDistance, wallCollisionLayer);
             Debug.DrawRay(raySizeHorizontal, Vector2.right * GetSign(horizontal) * rayDistance ,Color.red);
             playerDir = GetSign(horizontal);
-
             
-
-            if (hitHorizontal && hitHorizontal.distance < thresholdFromWall)
+            if (hitHorizontal && hitHorizontal.distance < thresholdFromWall && !playerOnGround)
             {
                 //jumpreseting when wallsticking
                 wallSticking = true;
+                wallDetected = false;
                 jumpLand = false;
                 //making axis movement y to 0 so that the player doesnt move upward when touching the wall also
                 //resetting the jump
-                if(isJumping)
+                if (isJumping)
                 {
                     axisMovement.y = 0;
                     JumpReset();
                 }
+            }//detecting wall when on ground to stop the running animation
+            else if (hitHorizontal && hitHorizontal.distance < thresholdFromWall && playerOnGround)
+            {
+                wallDetected = true;
+                axisMovement.x = 0;
             }
             else
             {
                 wallSticking = false;
+                wallDetected = false;
             }
-          
         }
     }
 
@@ -287,8 +259,6 @@ public class PlayerMovement : MonoBehaviour
             }
             
         }
-
-        containerInstance.Init(containerInstance._trailLength, containerInstance._spawnRate, playerSprite, containerInstance._effectDuration, containerInstance._desiredColor);
     }
 
     //set the player gravity
@@ -313,7 +283,7 @@ public class PlayerMovement : MonoBehaviour
             isJumpInput = false;
             if (!isJumping && !wallSticking)
             {
-                GroundJumpDelay();
+                JumpDelay();
             }
             else
             {
@@ -339,9 +309,8 @@ public class PlayerMovement : MonoBehaviour
         jumpLand = false;
         //wall jump timer
         timer = 0;
-
+        
         axisMovement = new Vector2(axisMovement.x, jumpHeight);
-        print(jumpHeight);
     }
 
     //player jump reset values when ater jumping
@@ -370,8 +339,6 @@ public class PlayerMovement : MonoBehaviour
 
             return temp;
         }
-
-      
     }
 
     //wall jumping function to check different inputs
@@ -389,25 +356,9 @@ public class PlayerMovement : MonoBehaviour
         //Jump same direction / player direction is same
     }
 
-    //Delay added so that the player should not fall off the wall
-    void WallJumpDelay()
+    void JumpDelay()
     {
-        if (timer < wallJumpDelayTimer)
-        {
-            timer += Time.deltaTime;
-            //to keep the wall sticking
-            wallSticking = true;
-        }
-        else
-        {
-            timer = 0;
-            wallSticking = false;
-        }
-    }
-
-    void GroundJumpDelay()
-    {
-        if (timer < groundJumpDelayTimer)
+        if (timer < jumpDelayTimer)
         {
             //some condition to make him jump from edge
             fallFromEdge = true;
@@ -416,7 +367,8 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             fallFromEdge = false;
-            timer = 0;
+            //so that the loop does not get continuouslyworking
+            timer = jumpDelayTimer;
         }
     }
 
