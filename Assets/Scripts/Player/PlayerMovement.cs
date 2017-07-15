@@ -281,7 +281,7 @@ public class PlayerMovement : MonoBehaviour
         {
             jumpLand = true;
             isJumpInput = false;
-            if (!isJumping && !wallSticking)
+            if (!isJumping && wallSticking)
             {
                 JumpDelay();
             }
