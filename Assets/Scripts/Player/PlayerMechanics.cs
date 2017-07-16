@@ -34,6 +34,12 @@ public class PlayerMechanics : MonoBehaviour
     bool isJumpInput;
     [SerializeField]
     float tempWallGravity;
+    [SerializeField]
+    float timer = 0;
+    [SerializeField]
+    float groundTimer;
+    [SerializeField]
+    bool fallFromEdge;
 
     //Wall
     [SerializeField]
@@ -46,6 +52,13 @@ public class PlayerMechanics : MonoBehaviour
     int temp = 0;
     [SerializeField]
     int playerDir;
+    [SerializeField]
+    bool jump;
+    [SerializeField]
+    float wallJumptimer = 0;
+    [SerializeField]
+    float wallJumpDelayTimer;
+
 
     //RayCasting
     [SerializeField]
@@ -111,6 +124,10 @@ public class PlayerMechanics : MonoBehaviour
         {
             Jump();
         }
+        else if (isJumpInput && fallFromEdge)
+        {
+            Jump();
+        }
 
         //wall Jumping
         if (isJumpInput && wallSticking && canJump && !inAir)
@@ -124,7 +141,15 @@ public class PlayerMechanics : MonoBehaviour
         if (!isGrounded)
         {
             //applying gravity to the player
-            Gravity();
+            Gravity();                      //last added
+            if (movement.y < 0 && !inAir && !wallSticking)
+            {
+                GroundJumpTimer();
+            }
+            else
+            {
+                fallFromEdge = false;
+            }
         }
 
         //setting of player movement to the rigidbody velocity        
@@ -189,36 +214,43 @@ public class PlayerMechanics : MonoBehaviour
         }
     }
 
-
     //when gravity is being aplied
     void Gravity()
     {
-
         if (wallSticking)
         {
+            if (isJumpInput)
+            {
+                WallJumpDelay();
+            }
             inAir = false;
             canJump = true;
+            
+            
             //making normal gravity act till velocity in less than 0 otherwise use wallstick gravity
             if (movement.y < 0)
             {
                 tempWallGravity -= wallStickGravity * Time.deltaTime;
                 movement.y = tempWallGravity;
-                Debug.Log("wall stick gravity" + movement.y);
             }
             else
             {
                 tempWallGravity = 0;
                 movement.y -= gravity * Time.deltaTime;
-                print("else part in wall stick gravity" + movement.y);
+
             }
         }
         else
         {
             tempWallGravity = 0;
-            print("normal gravity" + movement.y);
             movement.y -= gravity * Time.deltaTime;
-            isJumpInput = false;
+            //isJumpInput = false;
             canJump = false;
+            if (isJumpInput)
+            {
+                WallJumpDelay();
+            }
+
         }
     }
 
@@ -228,6 +260,7 @@ public class PlayerMechanics : MonoBehaviour
         movement.y = 0;
         inAir = false;
         canJump = true;
+        timer = 0;
     }
 
     void Jump()
@@ -236,6 +269,8 @@ public class PlayerMechanics : MonoBehaviour
         isJumpInput = false;
         wallSticking = false;
         movement = new Vector2(movement.x, jumpHeight);
+        wallJumptimer = 0;
+        timer = 0;
     }
 
     void HorizontalRayCastStatus()
@@ -251,6 +286,35 @@ public class PlayerMechanics : MonoBehaviour
         else
         {
             playerDir = 0;
+        }
+    }
+
+    void WallJumpDelay()
+    {
+        if (wallJumptimer < wallJumpDelayTimer)
+        {
+            wallJumptimer += Time.deltaTime;
+            isJumpInput = true;
+        }
+        else
+        {
+            wallJumptimer = 0;
+            isJumpInput = false;
+        }
+    }
+
+    //added last delete from here if u want
+    void GroundJumpTimer()
+    {
+        if (timer < groundTimer)
+        {
+            timer += Time.deltaTime;
+            fallFromEdge = true;
+        }
+        else
+        {
+            timer = groundTimer;
+            fallFromEdge = false;
         }
     }
 }
