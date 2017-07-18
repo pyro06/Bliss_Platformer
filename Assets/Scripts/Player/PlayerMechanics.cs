@@ -49,7 +49,6 @@ public class PlayerMechanics : MonoBehaviour
     [SerializeField]
     float thresholdFromWall;
     Vector2 raySizeHorizontalRight,raySizeHorizontalLeft;
-    int temp = 0;
     [SerializeField]
     int playerDir;
     [SerializeField]
@@ -76,6 +75,10 @@ public class PlayerMechanics : MonoBehaviour
     [SerializeField]
     float spacingOffsetY;
     Vector2 raySizeVertical;
+    [SerializeField]
+    PlayerEnergyUI energyBar;
+    [SerializeField]
+    float amountOfEnergy;
 
     private void Start()
     {
@@ -85,6 +88,8 @@ public class PlayerMechanics : MonoBehaviour
         containerInstance = GetComponent<Container>();
         playerCollider = GetComponent<EdgeCollider2D>();
         wallStickGravity = (gravity / 8);
+        amountOfEnergy = 100;
+        energyBar.CurrentVal = amountOfEnergy;
     }
 
     private void Update()
@@ -98,7 +103,7 @@ public class PlayerMechanics : MonoBehaviour
             isJumpInput = inputManagerInstance.Jump();
         }
 
-        //EnergyUsage();
+        EnergyUsage();
 
         containerInstance.Init(containerInstance._trailLength, containerInstance._spawnRate, playerSprite, containerInstance._effectDuration, containerInstance._desiredColor);
     }
@@ -316,5 +321,15 @@ public class PlayerMechanics : MonoBehaviour
             timer = groundTimer;
             fallFromEdge = false;
         }
+    }
+
+    void EnergyUsage()
+    {
+        if (movement.x != 0 && movement.y != 0)
+        {
+            amountOfEnergy -= 0.01f;
+            energyBar.CurrentVal = amountOfEnergy;
+        }
+        
     }
 }
