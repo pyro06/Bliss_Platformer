@@ -11,11 +11,18 @@ public class PlayerEnergyUI : MonoBehaviour
     [SerializeField]
     float fillValue;
 
+    [SerializeField]
+    float lerpSpeed;
+
     public float CurrentVal
     {
+        get
+        {
+            return fillValue;
+        }
         set
         {
-            fillValue = CalculateValue(value, 0, 100, 0, 1);
+            fillValue = CalculateValue(Mathf.Clamp(value,0,100), 0, 100, 0, 1);
         }
     }
 
@@ -38,7 +45,7 @@ public class PlayerEnergyUI : MonoBehaviour
     {
         if (fillValue != energyBar.fillAmount)
         {
-            energyBar.fillAmount = fillValue;
+            energyBar.fillAmount = Mathf.Lerp(energyBar.fillAmount, fillValue, lerpSpeed);
         }
     }
 

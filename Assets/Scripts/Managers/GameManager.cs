@@ -20,7 +20,17 @@ public class GameManager : MonoBehaviour
     }
 
     //Player related variables
+    [SerializeField]
+    PlayerEnergyUI playerEnergyBar;
     
+    public PlayerEnergyUI PlayerEnergyBar
+    {
+        get
+        {
+            return playerEnergyBar;
+        }
+    }
+
     public bool playerAlive;
 
     //JumpTile related variables

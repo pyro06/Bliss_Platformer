@@ -18,6 +18,7 @@ public class PlayerMechanics : MonoBehaviour
     float horizontal;
     [SerializeField]
     float moveSpeed;
+    float xVal;
 
     //Ground Jump
     [SerializeField]
@@ -76,8 +77,6 @@ public class PlayerMechanics : MonoBehaviour
     float spacingOffsetY;
     Vector2 raySizeVertical;
     [SerializeField]
-    PlayerEnergyUI energyBar;
-    [SerializeField]
     float amountOfEnergy;
 
     private void Start()
@@ -89,13 +88,13 @@ public class PlayerMechanics : MonoBehaviour
         playerCollider = GetComponent<EdgeCollider2D>();
         wallStickGravity = (gravity / 8);
         amountOfEnergy = 100;
-        energyBar.CurrentVal = amountOfEnergy;
+        GameManager.gameManagerInstance.PlayerEnergyBar.CurrentVal = amountOfEnergy;
     }
 
     private void Update()
     {
         //Only inputs like movemnet and jump
-        horizontal = inputManagerInstance.SetDirection();
+        horizontal = inputManagerInstance.PlayerHorizontalValue;
 
 
         if (!isJumpInput)
@@ -120,6 +119,7 @@ public class PlayerMechanics : MonoBehaviour
 
         //moveing left or right
         movement = new Vector2(horizontal * moveSpeed, movement.y);
+
 
         //checking which side of the wall the player is sticking
         HorizontalRayCastStatus();
@@ -325,11 +325,18 @@ public class PlayerMechanics : MonoBehaviour
 
     void EnergyUsage()
     {
-        if (movement.x != 0 && movement.y != 0)
+        if ((movement.x != 0 || movement.y != 0))
         {
-            amountOfEnergy -= 0.01f;
-            energyBar.CurrentVal = amountOfEnergy;
+            if (wallSticking && isGrounded)
+            {
+                amountOfEnergy = GameManager.gameManagerInstance.PlayerEnergyBar.CurrentVal * 100;
+            }
+            else
+            {
+                amountOfEnergy -= 0.01f;
+                GameManager.gameManagerInstance.PlayerEnergyBar.CurrentVal = amountOfEnergy;
+            }
+            
         }
-        
     }
 }
