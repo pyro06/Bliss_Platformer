@@ -7,15 +7,17 @@ public class PlayerMechanics : MonoBehaviour
     //Player components
     Rigidbody2D rgbd;
     EdgeCollider2D playerCollider;
-    InputManager inputManagerInstance;
     Container containerInstance;
     SpriteRenderer playerSprite;
+    [SerializeField]
+    Event eventSystem;
 
     //Player Movement
     [SerializeField]
     Vector2 movement;
     [SerializeField]
     float horizontal;
+    float movementDirection;
     [SerializeField]
     float moveSpeed;
     float xVal;
@@ -81,7 +83,6 @@ public class PlayerMechanics : MonoBehaviour
 
     private void Start()
     {
-        inputManagerInstance = GetComponent<InputManager>();
         rgbd = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         containerInstance = GetComponent<Container>();
@@ -94,14 +95,13 @@ public class PlayerMechanics : MonoBehaviour
     private void Update()
     {
         //Only inputs like movemnet and jump
-        horizontal = inputManagerInstance.PlayerHorizontalValue;
+        //Movement();
+        horizontal = movementDirection;
 
-
-        if (!isJumpInput)
-        {
-            isJumpInput = inputManagerInstance.Jump();
-        }
-
+        //Check for jump input
+        //JumpInput();
+        
+        
         EnergyUsage();
 
         containerInstance.Init(containerInstance._trailLength, containerInstance._spawnRate, playerSprite, containerInstance._effectDuration, containerInstance._desiredColor);
@@ -159,6 +159,51 @@ public class PlayerMechanics : MonoBehaviour
 
         //setting of player movement to the rigidbody velocity        
         rgbd.velocity = movement;
+    }
+
+    void Movement()
+    {
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            horizontal = 1;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            horizontal = -1;
+        }
+        else
+        {
+            horizontal = 0;
+        }
+    }
+
+    void JumpInput()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (!isJumpInput)
+            {
+                isJumpInput = true;
+            }
+        }
+    }
+
+    public void LeftButtonDirection(float direction)
+    {
+        movementDirection = direction;
+    }
+
+    public void RightButtonDirection(float direction)
+    {
+        movementDirection = direction;
+    }
+
+    public void JumpButton(bool value)
+    {
+        if (!isJumpInput)
+        {
+            isJumpInput = value;
+        }
     }
 
     void VerticalRayCasting()
