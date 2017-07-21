@@ -188,12 +188,7 @@ public class PlayerMechanics : MonoBehaviour
         }
     }
 
-    public void LeftButtonDirection(float direction)
-    {
-        movementDirection = direction;
-    }
-
-    public void RightButtonDirection(float direction)
+    public void MovementButtonDirection(float direction)
     {
         movementDirection = direction;
     }
