@@ -14,25 +14,12 @@ public class PlayerEnergyUI : MonoBehaviour
     [SerializeField]
     float lerpSpeed;
 
-    public float CurrentVal
-    {
-        get
-        {
-            return fillValue;
-        }
-        set
-        {
-            fillValue = CalculateValue(Mathf.Clamp(value,0,100), 0, 100, 0, 1);
-        }
-    }
+    public float tempFillValue;
 
     // Use this for initialization
     void Start ()
     {
         energyBar = GetComponent<Image>();
-        energyBar.type = Image.Type.Filled;
-        energyBar.fillMethod = Image.FillMethod.Horizontal;
-        energyBar.fillOrigin = (int)Image.OriginHorizontal.Left;
 	}
 	
 	// Update is called once per frame
@@ -43,6 +30,8 @@ public class PlayerEnergyUI : MonoBehaviour
 
     void HandleBar()
     {
+        fillValue = CalculateValue(Mathf.Clamp(tempFillValue, 0, 100), 0, 100, 0, 1);
+
         if (fillValue != energyBar.fillAmount)
         {
             energyBar.fillAmount = Mathf.Lerp(energyBar.fillAmount, fillValue, lerpSpeed);

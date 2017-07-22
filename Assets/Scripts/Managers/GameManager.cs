@@ -20,16 +20,8 @@ public class GameManager : MonoBehaviour
     }
 
     //Player related variables
-    [SerializeField]
-    PlayerEnergyUI playerEnergyBar;
-    
-    public PlayerEnergyUI PlayerEnergyBar
-    {
-        get
-        {
-            return playerEnergyBar;
-        }
-    }
+    public PlayerEnergyUI playerEnergyBar;
+
 
     public bool playerAlive;
 

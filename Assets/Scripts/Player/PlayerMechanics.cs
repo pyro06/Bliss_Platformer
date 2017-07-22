@@ -17,7 +17,6 @@ public class PlayerMechanics : MonoBehaviour
     Vector2 movement;
     [SerializeField]
     float horizontal;
-    float movementDirection;
     [SerializeField]
     float moveSpeed;
     float xVal;
@@ -81,22 +80,26 @@ public class PlayerMechanics : MonoBehaviour
     [SerializeField]
     float amountOfEnergy;
 
-    private void Start()
+
+    private void Awake()
     {
         rgbd = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         containerInstance = GetComponent<Container>();
         playerCollider = GetComponent<EdgeCollider2D>();
         wallStickGravity = (gravity / 8);
-        amountOfEnergy = 100;
-        GameManager.gameManagerInstance.PlayerEnergyBar.CurrentVal = amountOfEnergy;
+    }
+
+    private void Start()
+    {
+        rgbd.velocity = Vector2.zero;
+        GameManager.gameManagerInstance.playerEnergyBar.tempFillValue = amountOfEnergy;
     }
 
     private void Update()
     {
         //Only inputs like movemnet and jump
         //Movement();
-        horizontal = movementDirection;
 
         //Check for jump input
         //JumpInput();
@@ -105,6 +108,13 @@ public class PlayerMechanics : MonoBehaviour
         EnergyUsage();
 
         containerInstance.Init(containerInstance._trailLength, containerInstance._spawnRate, playerSprite, containerInstance._effectDuration, containerInstance._desiredColor);
+
+        if (amountOfEnergy <= 0)
+        {
+            amountOfEnergy = 0;
+        }
+
+        
     }
 
     private void FixedUpdate()
@@ -119,7 +129,6 @@ public class PlayerMechanics : MonoBehaviour
 
         //moveing left or right
         movement = new Vector2(horizontal * moveSpeed, movement.y);
-
 
         //checking which side of the wall the player is sticking
         HorizontalRayCastStatus();
@@ -190,7 +199,7 @@ public class PlayerMechanics : MonoBehaviour
 
     public void MovementButtonDirection(float direction)
     {
-        movementDirection = direction;
+        horizontal = direction;
     }
 
     public void JumpButton(bool value)
@@ -199,6 +208,11 @@ public class PlayerMechanics : MonoBehaviour
         {
             isJumpInput = value;
         }
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 
     void VerticalRayCasting()
@@ -369,12 +383,17 @@ public class PlayerMechanics : MonoBehaviour
         {
             if (wallSticking && isGrounded)
             {
-                amountOfEnergy = GameManager.gameManagerInstance.PlayerEnergyBar.CurrentVal * 100;
+                amountOfEnergy = GameManager.gameManagerInstance.playerEnergyBar.tempFillValue;
+                
             }
             else
             {
                 amountOfEnergy -= 0.01f;
-                GameManager.gameManagerInstance.PlayerEnergyBar.CurrentVal = amountOfEnergy;
+                GameManager.gameManagerInstance.playerEnergyBar.tempFillValue = amountOfEnergy;
+                if (GameManager.gameManagerInstance.playerEnergyBar.tempFillValue <= 0)
+                {
+                    GameManager.gameManagerInstance.playerEnergyBar.tempFillValue = 0;
+                }
             }
             
         }

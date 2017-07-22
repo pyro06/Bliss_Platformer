@@ -46,6 +46,6 @@ public class Laser : MonoBehaviour
 
     void RotateBeam()
     {
-        transform.Rotate(new Vector3(0, 0, 30) * Time.deltaTime,Space.Self);
+        transform.Rotate(new Vector3(0, 0, -30) * Time.deltaTime,Space.Self);
     }
 }
