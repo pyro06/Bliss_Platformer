@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public PlayerMechanics playerInstance;
+
     private static GameManager gameManager;
 
     public static GameManager gameManagerInstance
@@ -42,6 +44,4 @@ public class GameManager : MonoBehaviour
         gotoNextLevel = false;
         totalNumberOfCoins = GameObject.FindObjectsOfType<Coin>();
     }
-
-
 }

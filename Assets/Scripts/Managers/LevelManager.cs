@@ -10,8 +10,6 @@ public class LevelManager : MonoBehaviour
     [SerializeField]
     int currentLevelNo;
 
-    public Player playerInstance;
-
     public Vector2 playerPosition;
 
     private static LevelManager levelManager;
@@ -29,8 +27,6 @@ public class LevelManager : MonoBehaviour
         levelManager = this;
         currentLevelNo = 0;
         //LoadCurrentLevel();
-        
-        
     }
 
     public void FetchLevelInformation()
@@ -52,6 +48,6 @@ public class LevelManager : MonoBehaviour
 
     public void ReSpawnPlayerSameLevel()
     {
-        playerInstance.transform.position = playerPosition;
+        GameManager.gameManagerInstance.playerInstance.transform.position = playerPosition;
     }
 }

@@ -12,7 +12,7 @@ public class SpawnPoint : MonoBehaviour {
 	
 	void ResetPlayerSpawnPerLevel()
     {
-        LevelManager.levelMangerInstance.playerInstance.transform.position = transform.position;
+        GameManager.gameManagerInstance.playerInstance.transform.position = transform.position;
         LevelManager.levelMangerInstance.playerPosition = transform.position;
     }
 }

@@ -15,7 +15,7 @@ public class PlayerDeathCollisions : MonoBehaviour
 
     public virtual void Effect()
     {
-        LevelManager.levelMangerInstance.playerInstance.gameObject.SetActive(false);
+        GameManager.gameManagerInstance.playerInstance.gameObject.SetActive(false);
         StartCoroutine(PlayerDeadTimer(2));
        
     }
@@ -24,6 +24,6 @@ public class PlayerDeathCollisions : MonoBehaviour
     {
         yield return new WaitForSeconds(timer);
         LevelManager.levelMangerInstance.ReSpawnPlayerSameLevel();
-        LevelManager.levelMangerInstance.playerInstance.gameObject.SetActive(true);
+        GameManager.gameManagerInstance.playerInstance.gameObject.SetActive(true);
     }
 }

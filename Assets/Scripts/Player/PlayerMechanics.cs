@@ -77,8 +77,7 @@ public class PlayerMechanics : MonoBehaviour
     [SerializeField]
     float spacingOffsetY;
     Vector2 raySizeVertical;
-    [SerializeField]
-    float amountOfEnergy;
+    public float amountOfEnergy;
 
 
     private void Awake()
@@ -99,10 +98,10 @@ public class PlayerMechanics : MonoBehaviour
     private void Update()
     {
         //Only inputs like movemnet and jump
-        //Movement();
+        Movement();
 
         //Check for jump input
-        //JumpInput();
+        JumpInput();
         
         
         EnergyUsage();
@@ -112,6 +111,10 @@ public class PlayerMechanics : MonoBehaviour
         if (amountOfEnergy <= 0)
         {
             amountOfEnergy = 0;
+        }
+        else if(amountOfEnergy >= 100)
+        {
+            amountOfEnergy = 100;
         }
 
         
