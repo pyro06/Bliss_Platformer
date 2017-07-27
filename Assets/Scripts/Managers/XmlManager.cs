@@ -9,6 +9,16 @@ public class XmlManager : MonoBehaviour
     public string path;
 
     [SerializeField]
+    int levelNo;
+
+    public string levelName;
+
+   
+
+    [SerializeField]
+    int totalNumberOfLevels;
+
+    [SerializeField]
     List<LevelDetails> leveldetails = new List<LevelDetails>();
 
     //Array of normal tile gameobjects
@@ -17,53 +27,100 @@ public class XmlManager : MonoBehaviour
     //array normal tile positions
     [SerializeField]
     Vector2[] normalTilePos;
+    //maintaining normal tile id for loading
+    [SerializeField]
+    int[] normalTileIds;
 
+    //Array of poison tile gameobjects
     [SerializeField]
     PoisonTile[] poisonTiles;
+    //array of positions of poisonTiles
     [SerializeField]
     Vector2[] poisonTilePos;
-
+    //maintaining the id for loading
     [SerializeField]
-    GameObject[] levelObjects;
+    int[] poisonTileIds;
 
-    public GameObject normalTile;
+    public GameObject normalTileGameobject;
+    public GameObject poisonTileGameObject;
 
     private void Awake()
     {
-        
+        /*
         //getting the normal tile gameobjects
         normalTiles = GameObject.FindObjectsOfType<NormalTile>();
         normalTilePos = new Vector2[normalTiles.Length];
+        normalTileIds = new int[normalTiles.Length];
         //getting the normal tile gameobject positions
         for(int i = 0; i < normalTiles.Length; i++)
         {
             normalTilePos[i] = normalTiles[i].gameObject.transform.position;
+            normalTileIds[i] = normalTiles[i].normalTileId;
         }
 
         poisonTiles = GameObject.FindObjectsOfType<PoisonTile>();
         poisonTilePos = new Vector2[poisonTiles.Length];
-        for (int j = 0; j < poisonTiles.Length; j++)
+        poisonTileIds = new int[poisonTiles.Length];
+        //getting the normal tile gameobject positions
+        for (int i = 0; i < poisonTiles.Length; i++)
         {
-            poisonTilePos[j] = poisonTiles[j].gameObject.transform.position;
+            poisonTilePos[i] = poisonTiles[i].gameObject.transform.position;
+            poisonTileIds[i] = poisonTiles[i].poisonTileId;
+        }
+        */
+
+        //load on Awake
+        for (int j = 1; j < totalNumberOfLevels; j++)
+        {
+            levelNo = j;
+            levelName = levelNo.ToString();
+            path = "/Resources/XMLlevels/" + levelName + ".xml";
+            GameObject level = new GameObject(levelName);
+            GameObject obj;
+            leveldetails = LoadFromXml<List<LevelDetails>>();
+            //levelObjects = new GameObject[leveldetails.Count];
+
+            for (int i = 0; i < leveldetails.Count; i++)
+            {
+                if (leveldetails[i].id == 1)
+                {
+                    obj = Instantiate(normalTileGameobject, leveldetails[i].pos, Quaternion.identity);
+                    obj.transform.parent = level.transform;
+                }
+                else if (leveldetails[i].id == 2)
+                {
+                    obj = Instantiate(poisonTileGameObject, leveldetails[i].pos, Quaternion.identity);
+                    obj.transform.parent = level.transform;
+                }
+            }
+            LevelManager.levelMangerInstance.levels.Add(level);
         }
 
 
+
+        print("Loaded");
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.S))
         {
-            for(int i = 0; i < normalTiles.Length + poisonTiles.Length; i++)
+            path = "/Resources/XMLlevels/" + levelNo + ".xml";
+
+            for (int i = 0; i < normalTiles.Length + poisonTiles.Length; i++)
             {
-                leveldetails.Add(new LevelDetails());
-                if (i == normalTiles.Length - 1)
+                if (i < normalTiles.Length)
                 {
+                    leveldetails.Add(new LevelDetails());
                     leveldetails[i].pos = normalTilePos[i];
+                    leveldetails[i].id = normalTileIds[i];
                 }
                 else
                 {
-                    leveldetails[i].pos = poisonTilePos[i];
+
+                    leveldetails.Add(new LevelDetails());
+                    leveldetails[i].pos = poisonTilePos[i - normalTiles.Length];
+                    leveldetails[i].id = poisonTileIds[i - normalTiles.Length];
                 }
             }
 
@@ -73,15 +130,36 @@ public class XmlManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
         {
-            leveldetails = LoadFromXml<List<LevelDetails>>();
-            //levelObjects = new GameObject[leveldetails.Count];
-
-            for (int i = 0; i < leveldetails.Count; i++)
+            /*for(int j = 1; j < totalNumberOfLevels; j++)
             {
-                Instantiate(normalTile, leveldetails[i].pos, Quaternion.identity);
-            }
+                levelNo = j;
+                levelName = levelNo.ToString();
+                path = "/Resources/XMLlevels/" + levelName + ".xml";
+                GameObject level = new GameObject(levelName);
+                GameObject obj;
+                leveldetails = LoadFromXml<List<LevelDetails>>();
+                //levelObjects = new GameObject[leveldetails.Count];
 
-            print("Loaded");
+                for (int i = 0; i < leveldetails.Count; i++)
+                {
+                    if (leveldetails[i].id == 1)
+                    {
+                        obj = Instantiate(normalTileGameobject, leveldetails[i].pos, Quaternion.identity);
+                        obj.transform.parent = level.transform;
+                    }
+                    else if (leveldetails[i].id == 2)
+                    {
+                        obj = Instantiate(poisonTileGameObject, leveldetails[i].pos, Quaternion.identity);
+                        obj.transform.parent = level.transform;
+                    }
+                }
+                LevelManager.levelMangerInstance.levels.Add(level);
+                LevelManager.levelMangerInstance.levels[j].gameObject.SetActive(false);
+            }
+            
+
+
+            print("Loaded");*/
         }
     }
 
@@ -117,4 +195,6 @@ public class XmlManager : MonoBehaviour
 public class LevelDetails
 {
     public Vector2 pos;
+
+    public int id;
 }

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField]
-    GameObject[] levels;
+
+    public List<GameObject> levels;
 
     [SerializeField]
     int currentLevelNo;
@@ -25,9 +25,18 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         levelManager = this;
-        currentLevelNo = 0;
-        //LoadCurrentLevel();
+        currentLevelNo = 1;
+        
     }
+
+    /*private void Start()
+    {
+        for(int i = 0; i<6; i++)
+        {
+            levels[i].gameObject.SetActive(false);
+        }
+        LoadCurrentLevel();
+    }*/
 
     public void FetchLevelInformation()
     {
@@ -36,7 +45,7 @@ public class LevelManager : MonoBehaviour
 
     void LoadCurrentLevel()
     {
-        levels[currentLevelNo].gameObject.SetActive(true);
+        levels[currentLevelNo - 1].gameObject.SetActive(true);
     }
 
     void LoadNextLevel()
