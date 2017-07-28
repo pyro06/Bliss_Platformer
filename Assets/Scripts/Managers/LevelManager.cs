@@ -29,14 +29,14 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    /*private void Start()
+    private void Start()
     {
-        for(int i = 0; i<6; i++)
+        for(int i = 0; i < levels.Count; i++)
         {
             levels[i].gameObject.SetActive(false);
         }
         LoadCurrentLevel();
-    }*/
+    }
 
     public void FetchLevelInformation()
     {

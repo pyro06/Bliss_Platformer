@@ -70,7 +70,7 @@ public class XmlManager : MonoBehaviour
         */
 
         //load on Awake
-        for (int j = 1; j < totalNumberOfLevels; j++)
+        for (int j = 1; j <= totalNumberOfLevels; j++)
         {
             levelNo = j;
             levelName = levelNo.ToString();
