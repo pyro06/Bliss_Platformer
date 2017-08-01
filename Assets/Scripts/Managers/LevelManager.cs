@@ -5,8 +5,6 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
 
-    public List<GameObject> levels;
-
     [SerializeField]
     int currentLevelNo;
 
@@ -31,10 +29,6 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        for(int i = 0; i < levels.Count; i++)
-        {
-            levels[i].gameObject.SetActive(false);
-        }
         LoadCurrentLevel();
     }
 
@@ -45,18 +39,36 @@ public class LevelManager : MonoBehaviour
 
     void LoadCurrentLevel()
     {
-        levels[currentLevelNo - 1].gameObject.SetActive(true);
+        XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
     }
 
     void LoadNextLevel()
     {
-        levels[currentLevelNo].gameObject.SetActive(false);
-        currentLevelNo++;
-        levels[currentLevelNo].gameObject.SetActive(true);
+        if (currentLevelNo == 1)
+        {
+            XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
+        }
+        else
+        {
+            XmlManager.xmlManagerInstance.DeactivateCurrentLevel();
+            currentLevelNo++;
+            XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
+        }
+    }
+
+    void LoadLevel()
+    {
+        XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
     }
 
     public void ReSpawnPlayerSameLevel()
     {
         GameManager.gameManagerInstance.playerInstance.transform.position = playerPosition;
+    }
+
+    public void LevelChangeByButton(int levelNo)
+    {
+        currentLevelNo = levelNo;
+        LoadLevel();
     }
 }

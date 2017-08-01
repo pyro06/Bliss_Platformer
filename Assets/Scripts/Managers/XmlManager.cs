@@ -6,6 +6,8 @@ using System.IO;
 
 public class XmlManager : MonoBehaviour
 {
+    public static XmlManager xmlManagerInstance;
+
     public string path;
 
     [SerializeField]
@@ -13,10 +15,6 @@ public class XmlManager : MonoBehaviour
 
     public string levelName;
 
-   
-
-    [SerializeField]
-    int totalNumberOfLevels;
 
     [SerializeField]
     List<LevelDetails> leveldetails = new List<LevelDetails>();
@@ -46,7 +44,8 @@ public class XmlManager : MonoBehaviour
 
     private void Awake()
     {
-        /*
+        xmlManagerInstance = this;
+        
         //getting the normal tile gameobjects
         normalTiles = GameObject.FindObjectsOfType<NormalTile>();
         normalTilePos = new Vector2[normalTiles.Length];
@@ -67,38 +66,10 @@ public class XmlManager : MonoBehaviour
             poisonTilePos[i] = poisonTiles[i].gameObject.transform.position;
             poisonTileIds[i] = poisonTiles[i].poisonTileId;
         }
-        */
+        
 
         //load on Awake
-        for (int j = 1; j <= totalNumberOfLevels; j++)
-        {
-            levelNo = j;
-            levelName = levelNo.ToString();
-            path = "/Resources/XMLlevels/" + levelName + ".xml";
-            GameObject level = new GameObject(levelName);
-            GameObject obj;
-            leveldetails = LoadFromXml<List<LevelDetails>>();
-            //levelObjects = new GameObject[leveldetails.Count];
-
-            for (int i = 0; i < leveldetails.Count; i++)
-            {
-                if (leveldetails[i].id == 1)
-                {
-                    obj = Instantiate(normalTileGameobject, leveldetails[i].pos, Quaternion.identity);
-                    obj.transform.parent = level.transform;
-                }
-                else if (leveldetails[i].id == 2)
-                {
-                    obj = Instantiate(poisonTileGameObject, leveldetails[i].pos, Quaternion.identity);
-                    obj.transform.parent = level.transform;
-                }
-            }
-            LevelManager.levelMangerInstance.levels.Add(level);
-        }
-
-
-
-        print("Loaded");
+           
     }
 
     private void Update()
@@ -127,39 +98,51 @@ public class XmlManager : MonoBehaviour
             SaveToXml(leveldetails);
             print("Saved");
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.L))
+    public void LoadLevel(int levelNo)
+    {
+        levelName = levelNo.ToString();
+        path = "/Resources/XMLlevels/" + levelName + ".xml";
+        GameObject obj;
+        leveldetails = LoadFromXml<List<LevelDetails>>();
+        //levelObjects = new GameObject[leveldetails.Count];
+
+        for (int i = 0; i < leveldetails.Count; i++)
         {
-            /*for(int j = 1; j < totalNumberOfLevels; j++)
+            if (leveldetails[i].id == 1)
             {
-                levelNo = j;
-                levelName = levelNo.ToString();
-                path = "/Resources/XMLlevels/" + levelName + ".xml";
-                GameObject level = new GameObject(levelName);
-                GameObject obj;
-                leveldetails = LoadFromXml<List<LevelDetails>>();
-                //levelObjects = new GameObject[leveldetails.Count];
-
-                for (int i = 0; i < leveldetails.Count; i++)
-                {
-                    if (leveldetails[i].id == 1)
-                    {
-                        obj = Instantiate(normalTileGameobject, leveldetails[i].pos, Quaternion.identity);
-                        obj.transform.parent = level.transform;
-                    }
-                    else if (leveldetails[i].id == 2)
-                    {
-                        obj = Instantiate(poisonTileGameObject, leveldetails[i].pos, Quaternion.identity);
-                        obj.transform.parent = level.transform;
-                    }
-                }
-                LevelManager.levelMangerInstance.levels.Add(level);
-                LevelManager.levelMangerInstance.levels[j].gameObject.SetActive(false);
+                obj = ObjectPooler.sharedInstance.GetPooledObjects("NTile");
+                obj.gameObject.SetActive(true);
+                obj.transform.position = leveldetails[i].pos;
             }
-            
+            else if (leveldetails[i].id == 2)
+            {
+                obj = ObjectPooler.sharedInstance.GetPooledObjects("PTile");
+                obj.gameObject.SetActive(true);
+                obj.transform.position = leveldetails[i].pos;
+            }
+        }
+        print("Loaded");
+    }
 
-
-            print("Loaded");*/
+    public void DeactivateCurrentLevel()
+    {
+        GameObject obj;
+        for (int i = 0; i < leveldetails.Count; i++)
+        {
+            if (leveldetails[i].id == 1)
+            {
+                obj = ObjectPooler.sharedInstance.PutBackPooledObjects("NTile");
+                obj.gameObject.SetActive(false);
+                obj.transform.position = Vector2.zero;
+            }
+            else if (leveldetails[i].id == 2)
+            {
+                obj = ObjectPooler.sharedInstance.PutBackPooledObjects("PTile");
+                obj.gameObject.SetActive(false);
+                obj.transform.position = Vector2.zero;
+            }
         }
     }
 
