@@ -5,8 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
 
-    [SerializeField]
-    int currentLevelNo;
+    public int currentLevelNo;
 
     public Vector2 playerPosition;
 
@@ -29,7 +28,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        LoadCurrentLevel();
+        //LoadCurrentLevel();
     }
 
     public void FetchLevelInformation()
@@ -56,19 +55,9 @@ public class LevelManager : MonoBehaviour
         }
     }
 
-    void LoadLevel()
-    {
-        XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
-    }
-
     public void ReSpawnPlayerSameLevel()
     {
         GameManager.gameManagerInstance.playerInstance.transform.position = playerPosition;
     }
 
-    public void LevelChangeByButton(int levelNo)
-    {
-        currentLevelNo = levelNo;
-        LoadLevel();
-    }
 }
