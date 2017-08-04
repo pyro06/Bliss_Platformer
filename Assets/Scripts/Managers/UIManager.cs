@@ -6,107 +6,36 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [SerializeField]
+    Button[] allLevelButtons;
+
+    [SerializeField]
     int buttonLevelNo;
 
     [SerializeField]
     int phaseNo;
 
+    [SerializeField]
+    int phaseAddedCounter;
+
+
     private void Awake()
     {
-        PhaseTwo();
+        //PhaseOne();
+        for(int i = 0; i<allLevelButtons.Length; i++)
+        {
+            allLevelButtons[i].interactable = false;
+        }
     }
 
-    public void PhaseOne()
+    private void Update()
     {
-        phaseNo = 0;
+        for(int i = 0; i < allLevelButtons.Length; i++)
+        {
+            if (LevelManager.levelMangerInstance.currentLevelNo == i + 1)
+            {
+                allLevelButtons[i].interactable = true;
+            }
+        }
     }
-
-    public void PhaseTwo()
-    {
-        phaseNo = 15;
-    }
-
-    public void PhaseThree()
-    {
-        phaseNo = 30;
-    }
-
-    public void ButtonOne()
-    {
-        buttonLevelNo = 1 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-
-    public void ButtonTwo()
-    {
-        buttonLevelNo = 2 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-
-    public void ButtonThree()
-    {
-        buttonLevelNo = 3 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void ButtonFour()
-    {
-        buttonLevelNo = 4 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void Buttonfive()
-    {
-        buttonLevelNo = 5 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void ButtonSix()
-    {
-        buttonLevelNo = 6 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void ButtonSeven()
-    {
-        buttonLevelNo = 7 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void ButtonEight()
-    {
-        buttonLevelNo = 8 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void ButtonNine()
-    {
-        buttonLevelNo = 9 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void ButtonTen()
-    {
-        buttonLevelNo = 10 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void ButtonEleven()
-    {
-        buttonLevelNo = 11 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void ButtonTwelve()
-    {
-        buttonLevelNo = 12 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void ButtonThirteen()
-    {
-        buttonLevelNo = 13 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void ButtonFourteen()
-    {
-        buttonLevelNo = 14 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-    }
-    public void ButtonFifteen()
-    {
-        buttonLevelNo = 15 + phaseNo;
-        LevelManager.levelMangerInstance.currentLevelNo = buttonLevelNo;
-
-    }
+    
 }
