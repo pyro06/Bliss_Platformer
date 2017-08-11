@@ -16,19 +16,22 @@ public class UIManager : MonoBehaviour
 
     //Protected access modifiers are used so that the derived classes can use the variables without making them public
     [SerializeField]
-    protected Text phaseText;
+    Text phaseText;
 
     [SerializeField]
-    protected int phaseNo;
+    int phaseNo;
 
     [SerializeField]
-    protected int totalNumberOfPhases;
+    int totalNumberOfPhases;
 
     [SerializeField]
-    protected int phaseToLevelCounter;
+    int totalNumberOfLevelsUnlocked;
 
     [SerializeField]
-    protected int buttonLevelNo;
+    int phaseToLevelCounter;
+
+    [SerializeField]
+    int buttonLevelNo;
 
 
     private void Awake()
@@ -36,29 +39,62 @@ public class UIManager : MonoBehaviour
         phaseNo = 1;
         phaseText.text = "Phase " + phaseNo.ToString();
         phaseToLevelCounter = 0;
-
-        //PhaseOne();
-        for (int i = 0; i<allLevelButtons.Length; i++)
-        {
-            allLevelButtons[i].interactable = false;
-        }
-    }
-
-    private void Update()
-    {
-        for (int i = 0; i < allLevelButtons.Length; i++)
-        {
-            if (LevelManager.levelMangerInstance.currentLevelNo == i)
-            {
-                allLevelButtons[i-1].interactable = true;
-            }
-        }
     }
 
     public void PhaseButton()
     {
         uiPages[0].gameObject.SetActive(false);
+
+        //setting the interactability off of all the buttons on every phase start
+        for (int i = 0; i < allLevelButtons.Length; i++)
+        {
+            allLevelButtons[i].interactable = false;
+        }
+
         uiPages[1].gameObject.SetActive(true);
+
+        UnLockLevels(phaseNo);
+    }
+
+    void UnLockLevels(int currentPhaseNo)
+    {
+        print(currentPhaseNo);
+        if (currentPhaseNo == 1)
+        {
+            if (totalNumberOfLevelsUnlocked < 15)
+            {
+                for (int i = 0; i < totalNumberOfLevelsUnlocked; i++)
+                {
+                    allLevelButtons[i].interactable = true;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < totalNumberOfLevelsUnlocked - (totalNumberOfLevelsUnlocked - 15); i++)
+                {
+                    allLevelButtons[i].interactable = true;
+                }
+            }
+        }
+        //if (currentPhaseNo == 2)
+        else
+        {
+            if (totalNumberOfLevelsUnlocked < 15 * currentPhaseNo)
+            {
+                for (int i = 0; i < 15 - ((15 * currentPhaseNo) - totalNumberOfLevelsUnlocked); i++)
+                {
+                    allLevelButtons[i].interactable = true;
+                }
+            }
+            else
+            {
+                int x = totalNumberOfLevelsUnlocked - totalNumberOfLevelsUnlocked;
+                for (int i = 0; i < x; i++)
+                {
+                    allLevelButtons[i].interactable = true;
+                }
+            }
+        }
     }
 
     public void BackToPhasePage()
@@ -67,7 +103,7 @@ public class UIManager : MonoBehaviour
         uiPages[0].gameObject.SetActive(true);
     }
 
-    public void LeftButton()
+    public virtual void LeftButton()
     {
         if (phaseNo <= 1)
         {
@@ -83,7 +119,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public void RightButton()
+    public virtual void RightButton()
     {
         if (phaseNo >= totalNumberOfPhases)
         {
