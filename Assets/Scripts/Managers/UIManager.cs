@@ -63,24 +63,24 @@ public class UIManager : MonoBehaviour
         {
             if (totalNumberOfLevelsUnlocked < 15)
             {
-                for (int i = 0; i < totalNumberOfLevelsUnlocked; i++)
+                for (int i = 0; i < 15 - ((15 * currentPhaseNo) - totalNumberOfLevelsUnlocked); i++)
                 {
                     allLevelButtons[i].interactable = true;
                 }
             }
             else
-            {
-                for (int i = 0; i < totalNumberOfLevelsUnlocked - (totalNumberOfLevelsUnlocked - 15); i++)
+            {   //change this when you do work next time
+                for (int i = 0; i < 15; i++)
                 {
                     allLevelButtons[i].interactable = true;
                 }
             }
         }
-        //if (currentPhaseNo == 2)
-        else
+        if (currentPhaseNo == 2)
         {
             if (totalNumberOfLevelsUnlocked < 15 * currentPhaseNo)
             {
+                print("top");
                 for (int i = 0; i < 15 - ((15 * currentPhaseNo) - totalNumberOfLevelsUnlocked); i++)
                 {
                     allLevelButtons[i].interactable = true;
@@ -88,13 +88,32 @@ public class UIManager : MonoBehaviour
             }
             else
             {
-                int x = totalNumberOfLevelsUnlocked - totalNumberOfLevelsUnlocked;
-                for (int i = 0; i < x; i++)
+                for (int i = 0; i < 15; i++)
                 {
                     allLevelButtons[i].interactable = true;
                 }
             }
         }
+        if (currentPhaseNo == 3)
+        {
+            if (totalNumberOfLevelsUnlocked < 15 * currentPhaseNo)
+            {
+                print("top");
+                for (int i = 0; i < 15 - ((15 * currentPhaseNo) - totalNumberOfLevelsUnlocked); i++)
+                {
+                    allLevelButtons[i].interactable = true;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < 15; i++)
+                {
+                    allLevelButtons[i].interactable = true;
+                }
+            }
+        }
+        
+
     }
 
     public void BackToPhasePage()
