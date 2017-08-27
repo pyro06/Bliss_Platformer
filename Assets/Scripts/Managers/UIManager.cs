@@ -58,7 +58,6 @@ public class UIManager : MonoBehaviour
 
     void UnLockLevels(int currentPhaseNo)
     {
-        print(currentPhaseNo);
         if (currentPhaseNo == 1)
         {
             if (totalNumberOfLevelsUnlocked < 15)
@@ -122,7 +121,7 @@ public class UIManager : MonoBehaviour
         uiPages[0].gameObject.SetActive(true);
     }
 
-    public virtual void LeftButton()
+    void LeftButton()
     {
         if (phaseNo <= 1)
         {
@@ -138,7 +137,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public virtual void RightButton()
+    void RightButton()
     {
         if (phaseNo >= totalNumberOfPhases)
         {
