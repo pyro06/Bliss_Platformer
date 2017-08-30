@@ -29,6 +29,10 @@ public class XmlManager : MonoBehaviour
     [SerializeField]
     int[] normalTileIds;
 
+    //Array of energies gameobjects
+    [SerializeField]
+    EnergyPickUp[] energyPickups;
+
     //Array of poison tile gameobjects
     [SerializeField]
     PoisonTile[] poisonTiles;

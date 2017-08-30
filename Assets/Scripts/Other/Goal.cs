@@ -4,8 +4,18 @@ using UnityEngine;
 
 public class Goal : TileCollisionWithPlayer
 {
+    private void Update()
+    {
+        Rotate();
+    }
+
     public override void Objective()
     {
         LevelManager.levelMangerInstance.FetchLevelInformation();
+    }
+
+    void Rotate()
+    {
+        transform.Rotate(new Vector3(0, 0, -30) * Time.deltaTime, Space.Self);
     }
 }
