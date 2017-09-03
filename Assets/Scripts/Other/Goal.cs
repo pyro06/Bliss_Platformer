@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Goal : TileCollisionWithPlayer
 {
+    public int goalTileId;
+
     private void Update()
     {
         Rotate();

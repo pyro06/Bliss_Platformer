@@ -19,6 +19,15 @@ public class XmlManager : MonoBehaviour
     [SerializeField]
     List<LevelDetails> leveldetails = new List<LevelDetails>();
 
+    /* ids for gameobjects
+     * 0. spawn point
+     * 1. Normal tile (based on the phase)
+     * 2. goal
+     * 3. Energy
+     * 4. gem
+     * 5. saw
+     */
+
     //Array of normal tile gameobjects
     [SerializeField]
     NormalTile[] normalTiles;
@@ -29,19 +38,31 @@ public class XmlManager : MonoBehaviour
     [SerializeField]
     int[] normalTileIds;
 
-    //Array of energies gameobjects
+    //Array of goal gameobjects
     [SerializeField]
-    EnergyPickUp[] energyPickups;
+    Goal[] goalTiles;
+    [SerializeField]
+    Vector2[] goalPos;
+    [SerializeField]
+    int[] goalId;
 
-    //Array of poison tile gameobjects
+    //Array of gem gameobjects
     [SerializeField]
-    PoisonTile[] poisonTiles;
+    Gem[] gemTiles;
+    [SerializeField]
+    Vector2[] gemPos;
+    [SerializeField]
+    int[] gemId;
+
+    //Array of spawn tile gameobjects
+    [SerializeField]
+    SpawnPoint[] spawnTiles;
     //array of positions of poisonTiles
     [SerializeField]
-    Vector2[] poisonTilePos;
+    Vector2[] spawnTilePos;
     //maintaining the id for loading
     [SerializeField]
-    int[] poisonTileIds;
+    int[] spawnTileIds;
 
     public GameObject normalTileGameobject;
     public GameObject poisonTileGameObject;
@@ -61,19 +82,38 @@ public class XmlManager : MonoBehaviour
             normalTileIds[i] = normalTiles[i].normalTileId;
         }
 
-        poisonTiles = GameObject.FindObjectsOfType<PoisonTile>();
-        poisonTilePos = new Vector2[poisonTiles.Length];
-        poisonTileIds = new int[poisonTiles.Length];
-        //getting the normal tile gameobject positions
-        for (int i = 0; i < poisonTiles.Length; i++)
+        spawnTiles = GameObject.FindObjectsOfType<SpawnPoint>();
+        spawnTilePos = new Vector2[spawnTiles.Length];
+        spawnTileIds = new int[spawnTiles.Length];
+        //getting the poison tile gameobject positions
+        for (int i = 0; i < spawnTiles.Length; i++)
         {
-            poisonTilePos[i] = poisonTiles[i].gameObject.transform.position;
-            poisonTileIds[i] = poisonTiles[i].poisonTileId;
+            spawnTilePos[i] = spawnTiles[i].gameObject.transform.position;
+            spawnTileIds[i] = spawnTiles[i].spawnTileId;
         }
-        
+
+        goalTiles = GameObject.FindObjectsOfType<Goal>();
+        goalPos = new Vector2[goalTiles.Length];
+        goalId = new int[goalTiles.Length];
+
+        for (int i = 0; i < goalTiles.Length; i++)
+        {
+            goalPos[i] = goalTiles[i].gameObject.transform.position;
+            goalId[i] = goalTiles[i].goalTileId;
+        }
+
+        gemTiles = GameObject.FindObjectsOfType<Gem>();
+        gemPos = new Vector2[gemTiles.Length];
+        gemId = new int[gemTiles.Length];
+
+        for (int i = 0; i < goalTiles.Length; i++)
+        {
+            gemPos[i] = gemTiles[i].gameObject.transform.position;
+            gemId[i] = gemTiles[i].gemTileId;
+        }
 
         //load on Awake
-           
+
     }
 
     private void Update()
@@ -81,8 +121,12 @@ public class XmlManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.S))
         {
             path = "/Resources/XMLlevels/" + levelNo + ".xml";
-
-            for (int i = 0; i < normalTiles.Length + poisonTiles.Length; i++)
+            //please add the new gameobject length here or else it wont work
+            //
+            //
+            //
+            //
+            for (int i = 0; i < normalTiles.Length + goalTiles.Length + spawnTiles.Length + gemTiles.Length; i++)
             {
                 if (i < normalTiles.Length)
                 {
@@ -90,12 +134,26 @@ public class XmlManager : MonoBehaviour
                     leveldetails[i].pos = normalTilePos[i];
                     leveldetails[i].id = normalTileIds[i];
                 }
+                else if (i >= normalTiles.Length && i < normalTiles.Length + goalTiles.Length)
+                {
+                    print("p");
+                    leveldetails.Add(new LevelDetails());
+                    leveldetails[i].pos = goalPos[i - normalTiles.Length];
+                    leveldetails[i].id = goalId[i - normalTiles.Length];
+                }
+                else if (i >= normalTiles.Length + goalTiles.Length && i < normalTiles.Length + goalTiles.Length + spawnTiles.Length)
+                {
+                    print("r");
+                    leveldetails.Add(new LevelDetails());
+                    leveldetails[i].pos = spawnTilePos[i - (normalTiles.Length + goalTiles.Length)];
+                    leveldetails[i].id = spawnTileIds[i - (normalTiles.Length + goalTiles.Length)];
+                }
                 else
                 {
-
+                    print("a");
                     leveldetails.Add(new LevelDetails());
-                    leveldetails[i].pos = poisonTilePos[i - normalTiles.Length];
-                    leveldetails[i].id = poisonTileIds[i - normalTiles.Length];
+                    leveldetails[i].pos = gemPos[i - (normalTiles.Length + goalTiles.Length + spawnTiles.Length)];
+                    leveldetails[i].id = gemId[i - (normalTiles.Length + goalTiles.Length + spawnTiles.Length)];
                 }
             }
 
@@ -153,8 +211,6 @@ public class XmlManager : MonoBehaviour
     //Saving
     void SaveToXml(object obj)
     {
-
-        Debug.Log(obj.GetType());
         XmlSerializer serializer = new XmlSerializer(obj.GetType());
 
         using (var stream = new StreamWriter(Application.dataPath + path))

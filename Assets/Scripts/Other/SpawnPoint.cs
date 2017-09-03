@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnPoint : MonoBehaviour {
+public class SpawnPoint : MonoBehaviour
+{
+    public int spawnTileId;
 
 	// Use this for initialization
 	void Start ()
