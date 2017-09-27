@@ -43,16 +43,16 @@ public class LevelManager : MonoBehaviour
 
     void LoadNextLevel()
     {
-        if (currentLevelNo == 1)
+        /*if (currentLevelNo == 1)
         {
             XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
-        }
-        else
-        {
+        }*/
+        //else
+        //{
             XmlManager.xmlManagerInstance.DeactivateCurrentLevel();
-            currentLevelNo++;
-            XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
-        }
+            //currentLevelNo++;
+            //XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
+       // }
     }
 
     public void ReSpawnPlayerSameLevel()

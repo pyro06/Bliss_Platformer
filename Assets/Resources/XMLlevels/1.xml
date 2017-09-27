@@ -688,10 +688,17 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-18.673</x>
-      <y>-8.172</y>
+      <x>-6.930998</x>
+      <y>-3.183569</y>
     </pos>
-    <id>0</id>
+    <id>3</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-1.36470032</x>
+      <y>-3.183569</y>
+    </pos>
+    <id>3</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
@@ -699,5 +706,12 @@
       <y>-6.049999</y>
     </pos>
     <id>4</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-18.673</x>
+      <y>-8.172</y>
+    </pos>
+    <id>0</id>
   </LevelDetails>
 </ArrayOfLevelDetails>

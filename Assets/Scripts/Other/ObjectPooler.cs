@@ -21,7 +21,7 @@ public class ObjectPooler : MonoBehaviour
     private void Awake()
     {
         sharedInstance = this;
-
+        GameObject pooledGameObjectContainer = new GameObject("PooledObjectContainer");
         //initializing the list
         pooledObjects = new List<GameObject>();
         //added to foreach loop to take in all the items that need to be pooled
@@ -30,6 +30,7 @@ public class ObjectPooler : MonoBehaviour
             for (int i = 0; i < item.numberOfObjectsToPool; i++)
             {
                 GameObject obj = Instantiate(item.objectToPool);
+                obj.transform.parent = pooledGameObjectContainer.transform;
                 obj.SetActive(false);
                 pooledObjects.Add(obj);
             }
@@ -37,9 +38,6 @@ public class ObjectPooler : MonoBehaviour
 
     }
 
-    private void Start()
-    {  
-    }
     //getting all pooled objects which are not active in the scene
     public GameObject GetPooledObjects(string tag)
     {
