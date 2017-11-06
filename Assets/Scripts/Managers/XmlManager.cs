@@ -90,7 +90,7 @@ public class XmlManager : MonoBehaviour
         //getting the normal tile gameobject positions
         for(int i = 0; i < normalTiles.Length; i++)
         {
-            normalTilePos[i] = normalTiles[i].gameObject.transform.position;
+            normalTilePos[i] = new Vector2(RoundOff( normalTiles[i].gameObject.transform.position.x,2),RoundOff( normalTiles[i].gameObject.transform.position.y,2));
             normalTileIds[i] = normalTiles[i].normalTileId;
         }
 
