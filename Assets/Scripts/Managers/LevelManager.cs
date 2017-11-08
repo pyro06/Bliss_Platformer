@@ -28,7 +28,7 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        LoadCurrentLevel();
+        //LoadCurrentLevel();
     }
 
     

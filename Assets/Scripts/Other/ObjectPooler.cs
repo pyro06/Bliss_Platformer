@@ -69,7 +69,7 @@ public class ObjectPooler : MonoBehaviour
     public GameObject PutBackPooledObjects(string tag)
     {
         for (int i = 0; i < pooledObjects.Count; i++)
-        {   //checking which objects out of the pool are active or inative and return inactive ones
+        {   //checking which objects out of the pool are active or inative and return active ones
             if (pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag)
             {
                 return pooledObjects[i];

@@ -260,14 +260,21 @@ public class XmlManager : MonoBehaviour
             else if (leveldetails[i].id == 3)
             {
                 obj = ObjectPooler.sharedInstance.PutBackPooledObjects("Energy");
-                obj.gameObject.SetActive(false);
-                obj.transform.position = Vector2.zero;
+                if (obj != null)
+                {
+                    obj.gameObject.SetActive(false);
+                    obj.transform.position = Vector2.zero;
+                }
+                
             }
             else if (leveldetails[i].id == 4)
             {
                 obj = ObjectPooler.sharedInstance.PutBackPooledObjects("Gem");
-                obj.gameObject.SetActive(false);
-                obj.transform.position = Vector2.zero;
+                if (obj != null)
+                {
+                    obj.gameObject.SetActive(false);
+                    obj.transform.position = Vector2.zero;
+                }
             }
         }
     }
