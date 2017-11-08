@@ -130,12 +130,7 @@ public class XmlManager : MonoBehaviour
             spawnTilePos[i] = spawnTiles[i].gameObject.transform.position;
             spawnTileId[i] = spawnTiles[i].spawnTileId;
         }
-        //load on Awake
-        /*float b = (float)2.3566666;
-        float a = RoundOff(b,2);
-        print(a);*/
-        float mult = Mathf.Pow((float)10.0, 2);
-        print(mult);
+        
     }
 
     private void Update()
@@ -207,8 +202,8 @@ public class XmlManager : MonoBehaviour
             if (leveldetails[i].id == 0)
             {
                 obj = ObjectPooler.sharedInstance.GetPooledObjects("SpawnPoint");
-                obj.gameObject.SetActive(true);
                 obj.transform.position = leveldetails[i].pos;
+                obj.gameObject.SetActive(true);
             }
             else if (leveldetails[i].id == 1)
             {

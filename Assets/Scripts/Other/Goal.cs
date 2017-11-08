@@ -8,13 +8,14 @@ public class Goal : TileCollisionWithPlayer
 
     private void Update()
     {
-        Rotate();
+        //Rotate();
     }
 
     public override void Objective()
     {
-        LevelManager.levelMangerInstance.FetchLevelInformation();
+        LevelManager.levelMangerInstance.LoadNextLevel();
     }
+
 
     void Rotate()
     {

@@ -28,31 +28,28 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        //LoadCurrentLevel();
+        LoadCurrentLevel();
     }
 
-    public void FetchLevelInformation()
-    {
-        LoadNextLevel();
-    }
+    
 
     void LoadCurrentLevel()
     {
         XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
     }
 
-    void LoadNextLevel()
+    public void LoadNextLevel()
     {
         /*if (currentLevelNo == 1)
         {
             XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
-        }*/
-        //else
-        //{
+        }
+        else
+        {*/
             XmlManager.xmlManagerInstance.DeactivateCurrentLevel();
-            //currentLevelNo++;
-            //XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
-       // }
+            currentLevelNo = currentLevelNo + 1;
+            XmlManager.xmlManagerInstance.LoadLevel(currentLevelNo);
+        //}
     }
 
     public void ReSpawnPlayerSameLevel()

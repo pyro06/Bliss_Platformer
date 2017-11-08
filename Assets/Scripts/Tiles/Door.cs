@@ -6,6 +6,6 @@ public class Door : TileCollisionWithPlayer
 {
     public override void Objective()
     {
-        LevelManager.levelMangerInstance.FetchLevelInformation();
+        LevelManager.levelMangerInstance.LoadNextLevel();
     }
 }

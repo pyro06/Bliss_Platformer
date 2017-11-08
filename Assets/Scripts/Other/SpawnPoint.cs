@@ -7,7 +7,7 @@ public class SpawnPoint : MonoBehaviour
     public int spawnTileId;
 
 	// Use this for initialization
-	void Start ()
+	void OnEnable()
     {
         ResetPlayerSpawnPerLevel();
 	}

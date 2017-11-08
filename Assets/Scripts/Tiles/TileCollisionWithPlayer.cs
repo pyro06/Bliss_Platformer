@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TileCollisionWithPlayer : MonoBehaviour
 {
-    public virtual void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
@@ -12,13 +12,13 @@ public class TileCollisionWithPlayer : MonoBehaviour
         }
     }
 
-    public virtual void OnCollisionExit2D(Collision2D other)
+    /*private void OnTriggerExit2D(Collider2D other)
     {
         if (other.gameObject.tag == "Player")
         {
             ObjectiveCompleted();
         }
-    }
+    }*/
 
     public virtual void Objective()
     {
