@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
 
     private static LevelManager levelManager;
 
+    public bool testing;
+
     public static LevelManager levelMangerInstance
     {
         get
@@ -28,7 +30,10 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        //LoadCurrentLevel();
+        if (testing)
+        {
+            LoadCurrentLevel();
+        }
     }
 
     
