@@ -135,7 +135,7 @@ public class XmlManager : MonoBehaviour
 
     private void Update()
     {
-
+        
         if (Input.GetKeyDown(KeyCode.S))
         {
             path = "/Resources/XMLlevels/" + levelNo + ".xml";
@@ -146,6 +146,7 @@ public class XmlManager : MonoBehaviour
             //
             for (int i = 0; i < normalTiles.Length + goalTiles.Length + energyTiles.Length + gemTiles.Length + spawnTiles.Length; i++)
             {
+               
                 if (i < normalTiles.Length)
                 {
                     leveldetails.Add(new LevelDetails());
@@ -317,4 +318,13 @@ public class LevelDetails
     public Vector2 pos;
 
     public int id;
+
+    //all the variables for saw
+    public Vector2 fromPos;
+    public Vector2 toPos;
+    public float rotationSpeed;
+    public float movementSpeed;
+    public int direction;
+    public bool upDownMovement;
+    public bool rightLeftMovement;
 }
