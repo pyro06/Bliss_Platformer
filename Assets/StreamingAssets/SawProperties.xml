@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfSawDetails xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SawDetails>
+    <fromPos>
+      <x>0</x>
+      <y>0</y>
+    </fromPos>
+    <toPos>
+      <x>0</x>
+      <y>0</y>
+    </toPos>
+    <rotationSpeed>30</rotationSpeed>
+    <movementSpeed>0</movementSpeed>
+    <direction>0</direction>
+    <upDownMovement>false</upDownMovement>
+    <rightLeftMovement>false</rightLeftMovement>
+  </SawDetails>
+</ArrayOfSawDetails>

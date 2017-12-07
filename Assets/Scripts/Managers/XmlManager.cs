@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Xml.Serialization;
 using System.IO;
+using System.Xml;
 
 public class XmlManager : MonoBehaviour
 {
@@ -16,9 +17,12 @@ public class XmlManager : MonoBehaviour
 
     public string levelName;
 
-
     [SerializeField]
     List<LevelDetails> leveldetails = new List<LevelDetails>();
+    //a list is made because these details are present for each and every saw and they are not collectively used
+    [SerializeField]
+    List<SawDetails> sawDetails = new List<SawDetails>();
+
 
     /* ids for gameobjects
      * 0. spawn point
@@ -73,11 +77,25 @@ public class XmlManager : MonoBehaviour
     [SerializeField]
     int[] spawnTileId;
 
+    //Array of saw gameobjects
+    [SerializeField]
+    Saw[] sawTiles;
+    [SerializeField]
+    Vector2[] sawTilePos;
+    [SerializeField]
+    int[] sawTileId;
+
+    //Array of properties related to saw
+    [SerializeField]
+    float[] sawRotationSpeed;
+
+
     public GameObject normalTileGameobject;
     public GameObject goalTileGameObject;
     public GameObject energyTileGameObject;
     public GameObject gemTileGameObject;
     public GameObject spawnTileGameObject;
+    public GameObject sawTileGameObject;
 
     private void Awake()
     {
@@ -130,6 +148,20 @@ public class XmlManager : MonoBehaviour
             spawnTilePos[i] = spawnTiles[i].gameObject.transform.position;
             spawnTileId[i] = spawnTiles[i].spawnTileId;
         }
+
+        sawTiles = GameObject.FindObjectsOfType<Saw>();
+        sawTilePos = new Vector2[sawTiles.Length];
+        sawTileId = new int[sawTiles.Length];
+
+        sawRotationSpeed = new float[sawTiles.Length];
+        for(int i = 0; i < sawTiles.Length; i++)
+        {
+            sawTilePos[i] = sawTiles[i].gameObject.transform.position;
+            sawTileId[i] = sawTiles[i].sawTileId;
+
+            sawRotationSpeed[i] = sawTiles[i].rotationSpeed;
+        }
+
         
     }
 
@@ -138,13 +170,13 @@ public class XmlManager : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.S))
         {
-            path = "/Resources/XMLlevels/" + levelNo + ".xml";
+            path = "/StreamingAssets/" + levelNo + ".xml";
             //please add the new gameobject length here or else it wont work
             //
             //
             //
             //
-            for (int i = 0; i < normalTiles.Length + goalTiles.Length + energyTiles.Length + gemTiles.Length + spawnTiles.Length; i++)
+            for (int i = 0; i < normalTiles.Length + goalTiles.Length + energyTiles.Length + gemTiles.Length + spawnTiles.Length + sawTiles.Length; i++)
             {
                
                 if (i < normalTiles.Length)
@@ -171,16 +203,35 @@ public class XmlManager : MonoBehaviour
                     leveldetails[i].pos = gemPos[i - (normalTiles.Length + goalTiles.Length + energyTiles.Length)];
                     leveldetails[i].id = gemId[i - (normalTiles.Length + goalTiles.Length + energyTiles.Length)];
                 }
-                else
+                else if (i >= normalTiles.Length + goalTiles.Length + energyTiles.Length + gemTiles.Length && i < normalTiles.Length + goalTiles.Length + energyTiles.Length + gemTiles.Length + spawnTiles.Length)
                 {
                     leveldetails.Add(new LevelDetails());
                     leveldetails[i].pos = spawnTilePos[i - (normalTiles.Length + goalTiles.Length + energyTiles.Length + gemTiles.Length)];
                     leveldetails[i].id = spawnTileId[i - (normalTiles.Length + goalTiles.Length + energyTiles.Length + gemTiles.Length)];
                 }
+                else
+                {
+                    leveldetails.Add(new LevelDetails());
+                    leveldetails[i].pos = sawTilePos[i - (normalTiles.Length + goalTiles.Length + energyTiles.Length + gemTiles.Length + spawnTiles.Length)];
+                    leveldetails[i].id = sawTileId[i - (normalTiles.Length + goalTiles.Length + energyTiles.Length + gemTiles.Length + spawnTiles.Length)];
+                }
             }
 
             SaveToXml(leveldetails);
-            print("Saved");
+            print("Saved level");
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            path = "/StreamingAssets/" + "SawProperties" + ".xml";
+            for (int i = 0; i < sawTiles.Length; i++)
+            {
+                sawDetails.Add(new SawDetails());
+                sawDetails[i].rotationSpeed = sawRotationSpeed[i];
+            }
+
+            SaveToXml(sawDetails);
+            print("Saved saw details");
         }
 
         //only for trial to test if the levels are loading properly
@@ -193,9 +244,12 @@ public class XmlManager : MonoBehaviour
     public void LoadLevel(int levelNo)
     {
         levelName = levelNo.ToString();
-        path = "/Resources/XMLlevels/" + levelName + ".xml";
+        path = "/" + levelName + ".xml";
         GameObject obj;
+        
         leveldetails = LoadFromXml<List<LevelDetails>>();
+        //saw properties need to loaded as the game starts to use it when required
+        sawDetails = LoadFromXml<List<SawDetails>>();
         //levelObjects = new GameObject[leveldetails.Count];
         //Loading of the levels
         for (int i = 0; i < leveldetails.Count; i++)
@@ -230,8 +284,14 @@ public class XmlManager : MonoBehaviour
                 obj.gameObject.SetActive(true);
                 obj.transform.position = leveldetails[i].pos;
             }
+            else if (leveldetails[i].id == 5)
+            {
+                obj = ObjectPooler.sharedInstance.GetPooledObjects("Saw");
+                obj.gameObject.SetActive(true);
+                obj.transform.position = leveldetails[i].pos;
+            }
         }
-        print("Loaded");
+        print("Loaded level " + levelNo);
     }
 
     //working fine
@@ -277,6 +337,15 @@ public class XmlManager : MonoBehaviour
                     obj.transform.position = Vector2.zero;
                 }
             }
+            else if (leveldetails[i].id == 5)
+            {
+                obj = ObjectPooler.sharedInstance.PutBackPooledObjects("Saw");
+                if (obj != null)
+                {
+                    obj.gameObject.SetActive(false);
+                    obj.transform.position = Vector2.zero;
+                }
+            }
         }
     }
 
@@ -295,8 +364,23 @@ public class XmlManager : MonoBehaviour
     T LoadFromXml<T>()
     {
         XmlSerializer serializer = new XmlSerializer(typeof(T));
+        //changes the path
 
-        using (var stream = new StreamReader(Application.dataPath + path))
+        //For android
+        /*www class is been used 
+         * because we are lolading the levels in android
+         * in android the .apk is compressed and needs www class for the reader
+         * */
+        string streamingAssetPath = Application.streamingAssetsPath + path;
+
+        WWW reader = new WWW(streamingAssetPath);
+
+        while(!reader.isDone)
+        {
+
+        }
+
+        using(var stream = new MemoryStream(reader.bytes))
         {
             object obj = serializer.Deserialize(stream);
             return (T)obj;
@@ -318,13 +402,23 @@ public class LevelDetails
     public Vector2 pos;
 
     public int id;
+}
 
+[System.Serializable]
+public class SawDetails
+{
     //all the variables for saw
     public Vector2 fromPos;
+
     public Vector2 toPos;
+
     public float rotationSpeed;
+
     public float movementSpeed;
+
     public int direction;
+
     public bool upDownMovement;
+
     public bool rightLeftMovement;
 }

@@ -87,6 +87,7 @@ public class PlayerMechanics : MonoBehaviour
         containerInstance = GetComponent<Container>();
         playerCollider = GetComponent<EdgeCollider2D>();
         wallStickGravity = (gravity / 8);
+     
     }
 
     private void Start()
@@ -97,6 +98,10 @@ public class PlayerMechanics : MonoBehaviour
 
     private void Update()
     {
+        /* while testing on the phone please
+         * keep this commented
+         * otherwise the buttons wont work
+         * */
         //Only inputs like movemnet and jump
         Movement();
 
@@ -130,6 +135,7 @@ public class PlayerMechanics : MonoBehaviour
         //Horizontal checking for wall as ground layer
         HorizontalRayCasting();
 
+        //print(horizontal);
         //moveing left or right
         movement = new Vector2(horizontal * moveSpeed, movement.y);
 
@@ -216,6 +222,7 @@ public class PlayerMechanics : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+        
     }
 
     void VerticalRayCasting()
