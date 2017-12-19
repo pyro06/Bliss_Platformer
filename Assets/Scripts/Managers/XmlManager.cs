@@ -19,10 +19,9 @@ public class XmlManager : MonoBehaviour
 
     [SerializeField]
     List<LevelDetails> leveldetails = new List<LevelDetails>();
-    //a list is made because these details are present for each and every saw and they are not collectively used
-    [SerializeField]
-    List<SawDetails> sawDetails = new List<SawDetails>();
 
+ 
+    public SawDetailsScriptableObjects sdScriptableObject;
 
     /* ids for gameobjects
      * 0. spawn point
@@ -85,20 +84,13 @@ public class XmlManager : MonoBehaviour
     [SerializeField]
     int[] sawTileId;
 
-    //Array of properties related to saw
-    [SerializeField]
-    float[] sawRotationSpeed;
 
 
-    public GameObject normalTileGameobject;
-    public GameObject goalTileGameObject;
-    public GameObject energyTileGameObject;
-    public GameObject gemTileGameObject;
-    public GameObject spawnTileGameObject;
-    public GameObject sawTileGameObject;
+
 
     private void Awake()
     {
+        
         xmlManagerInstance = this;
         
         //getting the normal tile gameobjects
@@ -153,13 +145,13 @@ public class XmlManager : MonoBehaviour
         sawTilePos = new Vector2[sawTiles.Length];
         sawTileId = new int[sawTiles.Length];
 
-        sawRotationSpeed = new float[sawTiles.Length];
+        sawTiles = GameObject.FindObjectsOfType<Saw>();
+        sawTilePos = new Vector2[sawTiles.Length];
+        sawTileId = new int[sawTiles.Length];
         for(int i = 0; i < sawTiles.Length; i++)
         {
             sawTilePos[i] = sawTiles[i].gameObject.transform.position;
             sawTileId[i] = sawTiles[i].sawTileId;
-
-            sawRotationSpeed[i] = sawTiles[i].rotationSpeed;
         }
 
         
@@ -221,19 +213,6 @@ public class XmlManager : MonoBehaviour
             print("Saved level");
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            path = "/StreamingAssets/" + "SawProperties" + ".xml";
-            for (int i = 0; i < sawTiles.Length; i++)
-            {
-                sawDetails.Add(new SawDetails());
-                sawDetails[i].rotationSpeed = sawRotationSpeed[i];
-            }
-
-            SaveToXml(sawDetails);
-            print("Saved saw details");
-        }
-
         //only for trial to test if the levels are loading properly
         if (Input.GetKeyDown(KeyCode.L))
         {
@@ -248,8 +227,7 @@ public class XmlManager : MonoBehaviour
         GameObject obj;
         
         leveldetails = LoadFromXml<List<LevelDetails>>();
-        //saw properties need to loaded as the game starts to use it when required
-        sawDetails = LoadFromXml<List<SawDetails>>();
+
         //levelObjects = new GameObject[leveldetails.Count];
         //Loading of the levels
         for (int i = 0; i < leveldetails.Count; i++)
@@ -263,32 +241,33 @@ public class XmlManager : MonoBehaviour
             else if (leveldetails[i].id == 1)
             {
                 obj = ObjectPooler.sharedInstance.GetPooledObjects("NTile");
-                obj.gameObject.SetActive(true);
                 obj.transform.position = leveldetails[i].pos;
+                obj.gameObject.SetActive(true);
             }
             else if (leveldetails[i].id == 2)
             {
                 obj = ObjectPooler.sharedInstance.GetPooledObjects("Goal");
-                obj.gameObject.SetActive(true);
                 obj.transform.position = leveldetails[i].pos;
+                obj.gameObject.SetActive(true);
             }
             else if (leveldetails[i].id == 3)
             {
                 obj = ObjectPooler.sharedInstance.GetPooledObjects("Energy");
-                obj.gameObject.SetActive(true);
                 obj.transform.position = leveldetails[i].pos;
+                obj.gameObject.SetActive(true);
             }
             else if (leveldetails[i].id == 4)
             {
                 obj = ObjectPooler.sharedInstance.GetPooledObjects("Gem");
-                obj.gameObject.SetActive(true);
                 obj.transform.position = leveldetails[i].pos;
+                obj.gameObject.SetActive(true);
             }
             else if (leveldetails[i].id == 5)
             {
                 obj = ObjectPooler.sharedInstance.GetPooledObjects("Saw");
-                obj.gameObject.SetActive(true);
                 obj.transform.position = leveldetails[i].pos;
+                obj.gameObject.SetActive(true);
+                obj.GetComponentInChildren<Saw>().rotationSpeed = sdScriptableObject.sawDetails[0].rotationSpeed;
             }
         }
         print("Loaded level " + levelNo);
@@ -404,21 +383,3 @@ public class LevelDetails
     public int id;
 }
 
-[System.Serializable]
-public class SawDetails
-{
-    //all the variables for saw
-    public Vector2 fromPos;
-
-    public Vector2 toPos;
-
-    public float rotationSpeed;
-
-    public float movementSpeed;
-
-    public int direction;
-
-    public bool upDownMovement;
-
-    public bool rightLeftMovement;
-}

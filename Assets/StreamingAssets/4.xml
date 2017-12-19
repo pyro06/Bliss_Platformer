@@ -2,15 +2,15 @@
 <ArrayOfLevelDetails xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <LevelDetails>
     <pos>
-      <x>16.6</x>
-      <y>-13.75</y>
+      <x>-14.9</x>
+      <y>-7.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-11.9</x>
-      <y>-7.75</y>
+      <x>-8.9</x>
+      <y>-9.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -23,7 +23,371 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
+      <x>10.6</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-13.4</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-13.4</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-2.9</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-7.4</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
       <x>-16.4</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-14.9</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>12.1</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-2.9</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>1.6</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>4.6</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>18.1</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>15.1</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-22.4</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-16.4</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-16.4</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>15.1</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>12.1</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-2.9</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>3.1</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>21.1</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>3.1</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-7.4</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-8.9</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-17.9</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>24.1</x>
+      <y>5.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-19.4</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>24.1</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-5.9</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>3.1</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>-3.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>0.1</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-4.4</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-4.4</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>4.6</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-8.9</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>22.6</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>0.1</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>15.1</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>11.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-10.4</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-16.4</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>24.1</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-14.9</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>13.6</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-19.4</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>15.1</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>18.1</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>1.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>9.1</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>0.1</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>2.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>4.6</x>
       <y>-10.75</y>
     </pos>
     <id>1</id>
@@ -31,27 +395,62 @@
   <LevelDetails>
     <pos>
       <x>19.6</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>8.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>9.1</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-7.4</x>
       <y>-12.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>15.1</x>
+      <x>-17.9</x>
       <y>-9.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>19.6</x>
-      <y>-9.25</y>
+      <x>-23.9</x>
+      <y>-0.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-8.9</x>
+      <x>-20.9</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-1.4</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>10.6</x>
       <y>-12.25</y>
     </pos>
     <id>1</id>
@@ -65,14 +464,7 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>19.6</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>7.6</x>
+      <x>4.6</x>
       <y>-13.75</y>
     </pos>
     <id>1</id>
@@ -86,57 +478,22 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-13.4</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>15.1</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-8.9</x>
+      <x>-2.9</x>
       <y>-9.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-10.4</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>15.1</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>19.6</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-17.9</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-19.4</x>
+      <x>-1.4</x>
       <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-4.4</x>
+      <y>13.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -149,77 +506,14 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-2.9</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>24.1</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-22.4</x>
+      <x>9.1</x>
       <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-11.9</x>
-      <y>13.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
       <x>-4.4</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>16.6</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-10.4</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-7.4</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-4.4</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>0.1</x>
       <y>-13.75</y>
     </pos>
     <id>1</id>
@@ -227,111 +521,13 @@
   <LevelDetails>
     <pos>
       <x>-19.4</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-1.4</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>19.6</x>
       <y>-7.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-22.4</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-2.9</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>24.1</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>22.6</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-5.9</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>15.1</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-7.4</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-1.4</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>7.6</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>4.6</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-19.4</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>21.1</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>12.1</x>
+      <x>13.6</x>
       <y>-9.25</y>
     </pos>
     <id>1</id>
@@ -339,7 +535,77 @@
   <LevelDetails>
     <pos>
       <x>13.6</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>19.6</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-11.9</x>
       <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>6.1</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>18.1</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>4.6</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>24.1</x>
+      <y>2.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-8.9</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-8.9</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-10.4</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>21.1</x>
+      <y>-12.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -352,49 +618,35 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-13.4</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>6.1</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>1.6</x>
+      <x>16.6</x>
       <y>-9.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>9.1</x>
-      <y>13.25</y>
+      <x>-5.9</x>
+      <y>-12.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>15.1</x>
-      <y>13.25</y>
+      <x>4.6</x>
+      <y>-12.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-4.4</x>
+      <x>-19.4</x>
       <y>-13.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-23.9</x>
+      <x>24.1</x>
       <y>11.75</y>
     </pos>
     <id>1</id>
@@ -408,470 +660,8 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>9.1</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>10.6</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>-6.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-7.4</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>10.6</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>13.6</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-16.4</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>7.6</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
       <x>24.1</x>
-      <y>8.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>12.1</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>10.6</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>12.1</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-22.4</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>18.1</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-5.9</x>
       <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>13.6</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-14.9</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>6.1</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>0.1</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>24.1</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>24.1</x>
-      <y>4.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-1.4</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-17.9</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-13.4</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>0.1</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>24.1</x>
-      <y>7.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-4.4</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-14.9</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>22.6</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>9.1</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>2.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>21.1</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>22.6</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>22.6</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-10.4</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>13.6</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-16.4</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>3.1</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>22.6</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>10.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-2.9</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>3.1</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-2.9</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>7.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>24.1</x>
-      <y>5.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-4.4</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>9.1</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-7.4</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>10.6</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-8.9</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>12.1</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-11.9</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-2.9</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>24.1</x>
-      <y>10.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>0.1</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>18.1</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-11.9</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>8.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>24.1</x>
-      <y>2.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-10.4</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>10.6</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>4.6</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>3.1</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>24.1</x>
-      <y>-6.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-17.9</x>
-      <y>-10.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -884,8 +674,113 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>24.1</x>
-      <y>-4.75</y>
+      <x>-11.9</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-2.9</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-14.9</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-11.9</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>7.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>22.6</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>-1.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-10.4</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>7.6</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>13.6</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>12.1</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>1.6</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>18.1</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-2.9</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>6.1</x>
+      <y>-9.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -899,35 +794,56 @@
   <LevelDetails>
     <pos>
       <x>-1.4</x>
-      <y>13.25</y>
+      <y>-12.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-10.4</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>18.1</x>
+      <x>6.1</x>
       <y>-13.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>24.1</x>
-      <y>13.25</y>
+      <x>18.1</x>
+      <y>-10.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-2.9</x>
+      <x>9.1</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>1.6</x>
       <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>16.6</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>24.1</x>
+      <y>4.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>-13.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -940,99 +856,239 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>13.6</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>24.1</x>
-      <y>-3.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-22.4</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-7.4</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-19.4</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-16.4</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-19.4</x>
+      <x>16.6</x>
       <y>-10.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-8.9</x>
-      <y>13.25</y>
+      <x>9.1</x>
+      <y>-9.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>12.1</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>-3.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>4.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>1.6</x>
+      <x>-13.4</x>
       <y>-7.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>4.6</x>
+      <x>-20.9</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>10.6</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-10.4</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-16.4</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>10.6</x>
       <y>-9.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-20.9</x>
+      <x>-11.9</x>
       <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>19.6</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-14.9</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>0.1</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-7.4</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>15.1</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-13.4</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>19.6</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>12.1</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-8.9</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>19.6</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>0.1</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-17.9</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>16.6</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-1.4</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-17.9</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>3.1</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-22.4</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-17.9</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>-4.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>1.6</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>10.6</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>24.1</x>
+      <y>-6.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>24.1</x>
+      <y>7.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>7.6</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>7.6</x>
+      <y>-9.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -1045,71 +1101,50 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-13.4</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-1.4</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>1.6</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>1.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-13.4</x>
+      <x>22.6</x>
       <y>-13.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>24.1</x>
+      <x>-23.9</x>
       <y>-10.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>18.1</x>
-      <y>-10.75</y>
+      <x>24.1</x>
+      <y>10.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-1.4</x>
-      <y>-7.75</y>
+      <x>-23.9</x>
+      <y>-6.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>3.1</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-22.4</x>
+      <y>-12.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
       <x>24.1</x>
-      <y>1.25</y>
+      <y>-12.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -1122,14 +1157,84 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>4.6</x>
+      <x>-19.4</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-10.4</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>1.6</x>
       <y>-7.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-7.4</x>
+      <x>24.1</x>
+      <y>1.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>10.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>24.1</x>
+      <y>-3.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>16.6</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-22.4</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-13.4</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-4.4</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
       <y>13.25</y>
     </pos>
     <id>1</id>
@@ -1143,50 +1248,85 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>18.1</x>
+      <x>-22.4</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-16.4</x>
       <y>-12.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>13.6</x>
+      <x>-22.4</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-5.9</x>
       <y>-13.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-17.9</x>
+      <x>7.6</x>
       <y>-7.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>15.1</x>
+      <x>-23.9</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>9.1</x>
       <y>-12.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>16.6</x>
+      <x>0.1</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-5.9</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-1.4</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-10.4</x>
       <y>13.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>3.1</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>6.1</x>
-      <y>-7.75</y>
+      <x>21.1</x>
+      <y>-10.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -1200,77 +1340,35 @@
   <LevelDetails>
     <pos>
       <x>21.1</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-22.4</x>
       <y>-13.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-23.9</x>
-      <y>-0.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>21.1</x>
+      <x>-20.9</x>
       <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>4.6</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-14.9</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-14.9</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-17.9</x>
-      <y>-9.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
       <x>-13.4</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-5.9</x>
       <y>-9.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>24.1</x>
-      <y>11.75</y>
+      <x>-4.4</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-11.9</x>
+      <y>13.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -1283,218 +1381,127 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-16.4</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-14.9</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>1.6</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
       <x>-20.9</x>
-      <y>-13.75</y>
+      <y>-9.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-4.4</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>0.1</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>3.1</x>
+      <x>22.6</x>
       <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-11.9</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-10.4</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>9.1</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>16.6</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-8.9</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-20.9</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>-4.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>4.6</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>16.6</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-20.9</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>9.1</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-22.4</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>24.1</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>21.1</x>
-      <y>-7.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-23.9</x>
-      <y>-1.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-5.9</x>
-      <y>-10.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-17.9</x>
-      <y>-12.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-8.9</x>
-      <y>-13.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
       <x>6.1</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>16.6</x>
       <y>-7.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-20.9</x>
+      <x>13.6</x>
+      <y>-7.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>18.1</x>
       <y>13.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
+      <x>-7.4</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>24.1</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-1.4</x>
+      <y>-13.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
       <x>-5.9</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>24.1</x>
+      <y>-9.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-7.4</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>6.1</x>
       <y>-12.25</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
+      <x>22.6</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>1.6</x>
+      <y>-12.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-23.9</x>
+      <y>4.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>13.6</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>15.1</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
       <x>10.6</x>
-      <y>-9.25</y>
+      <y>-10.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -1507,22 +1514,50 @@
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>0.1</x>
-      <y>-12.25</y>
+      <x>24.1</x>
+      <y>8.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>-23.9</x>
-      <y>-7.75</y>
+      <x>24.1</x>
+      <y>-4.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
   <LevelDetails>
     <pos>
-      <x>1.6</x>
+      <x>12.1</x>
+      <y>-10.75</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>21.1</x>
       <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-17.9</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>-20.9</x>
+      <y>13.25</y>
+    </pos>
+    <id>1</id>
+  </LevelDetails>
+  <LevelDetails>
+    <pos>
+      <x>16.6</x>
+      <y>-7.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
@@ -1530,41 +1565,6 @@
     <pos>
       <x>12.1</x>
       <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>7.6</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>6.1</x>
-      <y>13.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>-16.4</x>
-      <y>-13.75</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>18.1</x>
-      <y>-9.25</y>
-    </pos>
-    <id>1</id>
-  </LevelDetails>
-  <LevelDetails>
-    <pos>
-      <x>1.6</x>
-      <y>-13.75</y>
     </pos>
     <id>1</id>
   </LevelDetails>
